@@ -219,18 +219,19 @@ const deOntem=()=>{const d=new Date();d.setDate(d.getDate()-1);const ot=d.toLoca
 const porLocal=(l)=>{const g={};l.forEach(p=>{if(!g[p.local])g[p.local]=[];g[p.local].push(p);});return g;};
 const restsDia=()=>{const f=isFds();return rests.filter(r=>r.dias==='ambos'||(r.dias==='fds'&&f)||(r.dias==='semana'&&!f));};
 
-const corpo=(tipo,cc)=>{
+const corpo=(tipo,cc,paraWA=false)=>{
   const l=doDia(tipo),g=porLocal(l);
   const hrEntrega=tipo==='Almoço'?'11:00':'18:00';
-  let t=`Pedido de Refeição - RP Construbase Mogi Guaçu\nData: ${hoje()} | ${tipo} — Entrega às ${hrEntrega}`;
+  const b=(txt)=>paraWA?`*${txt}*`:txt;
+  let t=`${b('Pedido de Refeição - RP Construbase Mogi Guaçu')}\nData: ${hoje()} | ${tipo} — Entrega às ${hrEntrega}`;
   if(cc)t+=`\nCentro de Custo: ${cc}`;
-  t+='\n\n';let n=0;
+  t+='\n';let n=0;
   Object.entries(g).forEach(([loc,its])=>{
-    t+=`${loc} (${its.length})\n`;
+    t+=`\n${b(loc+' - Total: '+its.length)}\n`;
     its.forEach(p=>{const r=p.restricoes&&p.restricoes.length>0?` [Restrição: ${p.restricoes.join(', ')}]`:'';t+=`  - ${p.nome}${r}\n`;});
-    n+=its.length;t+='\n';
+    n+=its.length;
   });
-  return t+`Total geral: ${n} refeições\n\nFAVOR ENVIAR GARFOS JUNTO COM AS MARMITAS.`;
+  return t+`\n${b('Total geral: '+n+' refeições')}\n\n${b('FAVOR ENVIAR GARFOS JUNTO COM AS MARMITAS.')}`;
 };
 
 async function carregarAba(nome){
@@ -345,6 +346,32 @@ function salvarSenhaAlt(){
   if(!nv||nv.length<4){alert('Mínimo 4 caracteres.');return;}
   if(nv!==cf){document.getElementById('alt-conf-erro').style.display='block';return;}
   senhaAtual=nv;localStorage.setItem('rp_senha',nv);cod=null;codExp=null;fecharAlt();alert('Senha alterada!');
+}
+
+function filtrarCC(v){
+  const lista=document.getElementById('cc-lista');
+  if(!lista)return;
+  if(v.trim().length<1){lista.style.display='none';return;}
+  const q=v.trim().toUpperCase();
+  const res=centrosCusto.filter(c=>c.id.toUpperCase().includes(q)||c.nome.toUpperCase().includes(q)||c.local.toUpperCase().includes(q)).slice(0,15);
+  if(!res.length){lista.style.display='none';return;}
+  lista.style.display='block';
+  lista.innerHTML=res.map(c=>`<div class="busca-item" onclick="selecionarCC('${c.id}','${c.nome.replace(/'/g,"\'")}','${c.local.replace(/'/g,"\'")}')"><div>${c.id} — ${c.nome}</div><div class="mat">${c.local}</div></div>`).join('');
+}
+
+function abrirBuscaCC(){
+  const inp=document.getElementById('cc-input');
+  if(inp)inp.focus();
+}
+
+function selecionarCC(id,nome,local){
+  const inp=document.getElementById('cc-input');
+  const hid=document.getElementById('cc-sel');
+  const lista=document.getElementById('cc-lista');
+  const val=`${id} — ${nome} (${local})`;
+  if(inp)inp.value=val;
+  if(hid)hid.value=val;
+  if(lista)lista.style.display='none';
 }
 
 function abrirBusca(){
@@ -503,7 +530,12 @@ function buildAdm(){
         <select id="rest-sel" onchange="selRest(this)" style="margin-bottom:6px"><option value="">Selecione...</option>${opR}</select>
         <p id="rest-em" style="font-size:12px;color:#1D9E75;margin-bottom:1rem;display:none"></p>
         <label>Centro de custo</label>
-        <select id="cc-sel" style="margin-bottom:1rem"><option value="">Selecione o centro de custo...</option>${opCC}</select>
+        <div class="busca-wrapper" style="margin-bottom:6px">
+          <input type="text" id="cc-input" placeholder="Digite o ID ou nome do centro de custo..." oninput="filtrarCC(this.value)" autocomplete="off" style="margin-bottom:0;padding-right:40px"/>
+          <span class="busca-ico" onclick="abrirBuscaCC()">🔍</span>
+        </div>
+        <div id="cc-lista" style="display:none;border:1px solid #ddd;border-radius:8px;max-height:180px;overflow-y:auto;margin-bottom:1rem;background:#fff;"></div>
+        <input type="hidden" id="cc-sel" value=""/>
         ${alm.length>0?`<button class="btn-enviar alm" id="btn-alm" onclick="enviarEmail('Almoço')">✉ E-mail almoço (${alm.length})</button><button class="btn-wa" id="btn-alm-wa" onclick="enviarWA('Almoço')">WhatsApp almoço (${alm.length})</button>`:''}
         ${jan.length>0?`<button class="btn-enviar jan" id="btn-jan" onclick="enviarEmail('Janta')" style="margin-top:8px">✉ E-mail janta (${jan.length})</button><button class="btn-wa" id="btn-jan-wa" onclick="enviarWA('Janta')" style="margin-top:8px">WhatsApp janta (${jan.length})</button>`:''}
         ${alm.length===0&&jan.length===0?`<p class="empty-state">Nenhum pedido hoje</p>`:''}
@@ -582,7 +614,7 @@ function enviarWA(tipo){
   if(!restSel){alert('Selecione o restaurante primeiro.');return;}
   if(!restSel.whatsapp){alert('Este restaurante não tem WhatsApp cadastrado.');return;}
   const cc=document.getElementById('cc-sel')?.value||'';
-  window.open(`https://wa.me/${restSel.whatsapp}?text=${encodeURIComponent(corpo(tipo,cc))}`,'_blank');
+  window.open(`https://wa.me/${restSel.whatsapp}?text=${encodeURIComponent(corpo(tipo,cc,true))}`,'_blank');
 }
 
 function baixarCSV(){
