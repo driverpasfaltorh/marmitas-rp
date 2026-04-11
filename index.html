@@ -543,9 +543,9 @@ function buildAdm(){
   }
   if(aview==='exportar'){
     const td=doDia(null);let li='';
-    td.forEach(p=>{li+=`<tr><td>${p.protocolo||''}</td><td>${p.matricula||''}</td><td>${p.nome}</td><td>${p.tipo}</td><td>${p.local}</td><td>${p.data}</td><td>${p.hora||''}</td><td>${p.restaurante||''}</td><td>${p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):''}</td></tr>`;});
+    td.forEach(p=>{li+=`<tr><td>${p.protocolo||''}</td><td>${p.matricula||''}</td><td>${p.nome}</td><td>${p.tipo}</td><td>${p.local}</td><td>${p.data}</td><td>${p.hora||''}</td><td>${p.restaurante||''}</td><td>${p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):''}</td><td>${p.centroCusto||''}</td></tr>`;});
     return`<div class="logo"><h1>Exportar dados</h1><p>${hj}</p></div>${nav}
-      <div class="card">${td.length===0?`<p class="empty-state">Nenhum pedido hoje</p>`:`<button class="btn-export" onclick="baixarCSV()">Baixar .CSV</button><div class="overflow-x"><table class="export-table"><thead><tr><th>Protocolo</th><th>Matrícula</th><th>Nome</th><th>Pedido</th><th>Local</th><th>Data</th><th>Hora</th><th>Restaurante</th><th>Restrições</th></tr></thead><tbody>${li}</tbody></table></div>`}</div>`;
+      <div class="card">${td.length===0?`<p class="empty-state">Nenhum pedido hoje</p>`:`<button class="btn-export" onclick="baixarCSV()">Baixar .CSV</button><div class="overflow-x"><table class="export-table"><thead><tr><th>Protocolo</th><th>Matrícula</th><th>Nome</th><th>Pedido</th><th>Local</th><th>Data</th><th>Hora</th><th>Restaurante</th><th>Restrições</th><th>Centro de Custo</th></tr></thead><tbody>${li}</tbody></table></div>`}</div>`;
   }
   if(aview==='config'&&isRH){
     return`<div class="logo"><h1>Configurações</h1></div>${nav}
@@ -578,7 +578,8 @@ function fazerPed(){
   const hj=hoje();
   if(pedidos.find(p=>p.matricula===f.m&&p.tipo===tipo&&p.data===hj)){alert(`${f.n} já tem pedido de ${tipo} hoje.`);return;}
   const rd=restsDia();
-  const np={id:Date.now().toString(),protocolo:proto(),matricula:f.m,nome:f.n,local,tipo,data:hj,hora:agora(),restaurante:rd.length>0?rd[0].nome:'',restricoes:getRestricoesSelecionadas(),operador:operador?.m||null};
+  const ccVal=document.getElementById('cc-sel')?.value||'';
+  const np={id:Date.now().toString(),protocolo:proto(),matricula:f.m,nome:f.n,local,tipo,data:hj,hora:agora(),restaurante:rd.length>0?rd[0].nome:'',restricoes:getRestricoesSelecionadas(),operador:operador?.m||null,centroCusto:ccVal};
   pedidos.push(np);salvar();ultimoPed=np;temRestricao=null;view='comp';render();
 }
 
@@ -619,8 +620,8 @@ function enviarWA(tipo){
 
 function baixarCSV(){
   const td=doDia(null);
-  let c='Protocolo,Matrícula,Nome,Pedido,Local de Entrega,Data,Hora,Restaurante,Restrições\n';
-  td.forEach(p=>{c+=`"${p.protocolo||''}","${p.matricula||''}","${p.nome}","${p.tipo}","${p.local}","${p.data}","${p.hora||''}","${p.restaurante||''}","${p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):''}" \n`;});
+  let c='Protocolo,Matrícula,Nome,Pedido,Local de Entrega,Data,Hora,Restaurante,Restrições,Centro de Custo\n';
+  td.forEach(p=>{c+=`"${p.protocolo||''}","${p.matricula||''}","${p.nome}","${p.tipo}","${p.local}","${p.data}","${p.hora||''}","${p.restaurante||''}","${p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):''}","${p.centroCusto||''}" \n`;});
   const b=new Blob(['\uFEFF'+c],{type:'text/csv;charset=utf-8'});
   const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=`pedidos_rp_${hoje().replace(/\//g,'-')}.csv`;a.click();URL.revokeObjectURL(u);
 }
