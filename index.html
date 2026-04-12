@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/Deivis/Downloads/index_8.html -->
+<!-- saved from url=(0046)file:///C:/Users/Deivis/Downloads/index_9.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -455,7 +455,7 @@ function filtraBusca(v){
   var q=v.trim().toUpperCase();
   var lista=funcs.filter(function(f){return f.n.indexOf(q)>=0;}).slice(0,20);
   if(!lista.length){res.innerHTML='<div style="padding:12px;font-size:13px;color:#aaa">Nenhum resultado</div>';return;}
-  res.innerHTML=lista.map(function(f){return '<div class="bi" onclick="selBusca(''+f.m+'',''+f.n.replace(/'/g,"\'")+'')" ><div>'+f.n+'</div><div class="bm">'+f.m+'</div></div>';}).join('');
+  res.innerHTML=lista.map(function(f){var mn=f.m,nn=f.n.replace(/"/g,'&quot;');return '<div class="bi" onclick="selBusca(\"'+mn+'\",\"'+nn+'\")"><div>'+f.n+'</div><div class="bm">'+f.m+'</div></div>';}).join('');
 }
 function selBusca(mat,nome){
   fecharBusca();
@@ -487,11 +487,20 @@ function filtraCC(v){
   var res=ccs.filter(function(c){return c.id.toUpperCase().indexOf(q)>=0||c.nome.toUpperCase().indexOf(q)>=0||c.local.toUpperCase().indexOf(q)>=0;}).slice(0,15);
   if(!res.length){lista.style.display='none';return;}
   lista.style.display='block';
-  lista.innerHTML=res.map(function(c){return '<div class="bi" onclick="selCC(''+c.id+'',''+c.nome.replace(/'/g,"\'")+'',''+c.local.replace(/'/g,"\'")+'')"><div>'+c.id+' — '+c.nome+'</div><div class="bm">'+c.local+'</div></div>';}).join('');
+  lista.innerHTML=res.map(function(c){
+    var idx2=ccs.indexOf(c);
+    return '<div class="bi" onclick="selCCIdx('+idx2+')"><div>'+c.id+' &mdash; '+c.nome+'</div><div class="bm">'+c.local+'</div></div>';
+  }).join('');
+}
+function selCCIdx(idx){
+  var c=ccs[idx];if(!c)return;
+  var val=c.id+' — '+c.nome+' ('+c.local+')';
+  var inp=document.getElementById('cc-inp'),hid=document.getElementById('cc-hid'),lista=document.getElementById('cc-lista');
+  if(inp)inp.value=val;if(hid)hid.value=val;if(lista)lista.style.display='none';
 }
 function selCC(id,nome,local){
-  var inp=document.getElementById('cc-inp'),hid=document.getElementById('cc-hid'),lista=document.getElementById('cc-lista');
   var val=id+' — '+nome+' ('+local+')';
+  var inp=document.getElementById('cc-inp'),hid=document.getElementById('cc-hid'),lista=document.getElementById('cc-lista');
   if(inp)inp.value=val;if(hid)hid.value=val;if(lista)lista.style.display='none';
 }
 
