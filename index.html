@@ -455,8 +455,9 @@ function filtraBusca(v){
   var q=v.trim().toUpperCase();
   var lista=funcs.filter(function(f){return f.n.indexOf(q)>=0;}).slice(0,20);
   if(!lista.length){res.innerHTML='<div style="padding:12px;font-size:13px;color:#aaa">Nenhum resultado</div>';return;}
-  res.innerHTML=lista.map(function(f){var mn=f.m,nn=f.n.replace(/"/g,'&quot;');return '<div class="bi" onclick="selBusca(\"'+mn+'\",\"'+nn+'\")"><div>'+f.n+'</div><div class="bm">'+f.m+'</div></div>';}).join('');
+  res.innerHTML=lista.map(function(f,i){return '<div class="bi" data-idx="'+i+'" onclick="selBuscaIdx(this)"><div>'+f.n+'</div><div class="bm">'+f.m+'</div></div>';}).join('');
 }
+function selBuscaIdx(el){var lista=document.querySelectorAll('#busca-res .bi');var idx=parseInt(el.getAttribute('data-idx'));var filtered=funcs.filter(function(f){var q=document.getElementById('busca-inp').value.trim().toUpperCase();return f.n.indexOf(q)>=0;});var f=filtered[idx];if(f)selBusca(f.m,f.n);}
 function selBusca(mat,nome){
   fecharBusca();
   var me=document.getElementById('mat'),nf=document.getElementById('nome-f');
@@ -611,7 +612,7 @@ function buildAdm(){
         h+='<p class="grp-lbl">'+loc+' — '+its.length+'</p>';
         its.forEach(function(p){
           var rb=p.restricoes&&p.restricoes.length>0?'<div><span class="rest-badge">⚠ '+p.restricoes.join(', ')+'</span></div>':'';
-          h+='<div class="ped-item"><div><div class="ped-nome">'+p.nome+'</div><div style="font-size:11px;color:#999">Mat: '+(p.matricula||'-')+' | Prot: '+(p.protocolo||'-')+'</div>'+rb+'</div>'+(isRH?'<button class="btn-sm" onclick="remover(''+p.id+'')">Remover</button>':'')+'</div>';
+          h+='<div class="ped-item"><div><div class="ped-nome">'+p.nome+'</div><div style="font-size:11px;color:#999">Mat: '+(p.matricula||'-')+' | Prot: '+(p.protocolo||'-')+'</div>'+rb+'</div>'+(isRH?'<button class="btn-sm" data-pid="'+p.id+'" onclick="removerPed(this)">Remover</button>':'')+'</div>';
         });
       });
       return h+'<div class="total-bar"><span>Total '+tp+'</span><span>'+l.length+' refeições</span></div>';
@@ -717,6 +718,7 @@ function repetirOntem(){
   });
   salvar();alert(count+' pedido(s) repetido(s)!');render();
 }
+function removerPed(btn){var id=btn.getAttribute('data-pid');if(!confirm('Remover este pedido?'))return;pedidos=pedidos.filter(function(p){return p.id!==id;});salvar();render();}
 function remover(id){if(!confirm('Remover este pedido?'))return;pedidos=pedidos.filter(function(p){return p.id!==id;});salvar();render();}
 
 function envEmail(tipo){
