@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/Deivis/Downloads/index_1.html -->
+<!-- saved from url=(0046)file:///C:/Users/Deivis/Downloads/index_3.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,7 +93,7 @@ table.export-table tr:nth-child(even){background:#fafafa;}
 </style>
 </head>
 <body>
-<div id="ov-login" class="overlay" style="display:none">
+<div id="ov-login" class="overlay" style="display: none;">
   <div class="overlay-card">
     <h2>Painel RH</h2>
     <p>Digite sua matrícula e senha</p>
@@ -171,12 +171,12 @@ table.export-table tr:nth-child(even){background:#fafafa;}
   </div>
 </div>
 
-<div id="ov-busca" class="overlay" style="display:none">
+<div id="ov-busca" class="overlay" style="display: none;">
   <div class="overlay-card">
     <h2>Buscar funcionário</h2>
     <p>Digite o nome para pesquisar</p>
     <input type="text" id="busca-input" placeholder="Ex: Carlos..." oninput="filtrarBusca(this.value)" autocomplete="off">
-    <div id="busca-res" style="max-height:280px;overflow-y:auto;border:1px solid #eee;border-radius:8px;"></div>
+    <div id="busca-res" style="max-height:280px;overflow-y:auto;border:1px solid #eee;border-radius:8px;"><div style="padding:12px;font-size:13px;color:#aaa">Digite ao menos 2 letras</div></div>
     <button class="btn-secondary" onclick="fecharBusca()" style="margin-top:1rem">Fechar</button>
   </div>
 </div>
@@ -195,7 +195,7 @@ table.export-table tr:nth-child(even){background:#fafafa;}
 
 <div class="container"><div id="app"><div class="logo"><h1>Pedido de Refeição</h1><p>RP Construbase — Mogi Guaçu</p></div>
     <div class="nav-tabs"><button class="tab active">Fazer pedido</button><button class="tab" onclick="abrirAdmin()">Painel RH</button></div>
-    <div class="aviso">Pedidos de <strong>janta</strong> aceitos até as <strong>13:30</strong></div>
+    <div class="aviso">Pedidos de <strong>almoço</strong> (até 08:30) e <strong>janta</strong> (até 13:30) disponíveis</div><div style="background:#f0f9f5;border-radius:8px;padding:8px 12px;margin-bottom:1rem;font-size:13px;color:#0F6E56">Operando como: <strong>Acesso RH</strong><span class="nivel-badge nivel-rh">RH</span><span style="float:right;cursor:pointer;color:#aaa" onclick="operador=null;temRestricao=null;render()">✕</span></div>
     <div class="card">
       <label>Matrícula</label>
       <div class="busca-wrapper"><input type="text" id="mat" placeholder="Digite a matrícula" oninput="buscarMat(this.value)" autocomplete="off" style="margin-bottom:0;padding-right:40px"><span class="busca-ico" onclick="abrirBusca()">🔍</span></div>
@@ -206,7 +206,7 @@ table.export-table tr:nth-child(even){background:#fafafa;}
       <label>Local de entrega</label>
       <select id="local"><option value="">Selecione o local...</option></select>
       <label>Refeição</label>
-      <select id="tipo"><option value="">Selecione...</option><option value="Janta">Janta</option></select>
+      <select id="tipo"><option value="">Selecione...</option><option value="Almoço">Almoço</option><option value="Janta">Janta</option></select>
       <label>Possui alguma restrição alimentar?</label>
       <div class="sim-nao"><button id="btn-sim" onclick="setRestricao(true)">Sim</button><button id="btn-nao" onclick="setRestricao(false)">Não</button></div>
       <div id="bloco-rest" style="display:none">
@@ -226,16 +226,16 @@ const SHEET_ID='1FEA60779o0kKQiN52OXDqX7KYFCrbyMhnhK8PZXZDvM';
 const FERIADOS=['01/01','21/04','01/05','07/09','12/10','02/11','15/11','20/11','25/12'];
 const SENHA_MASTER='@RpMaster2024';
 
-let senhaAtual=localStorage.getItem('rp_senha')||'@Rh_rp';
-let cod=null,codExp=null,codEsqueci=null,codEsqueciExp=null;
-let funcs=JSON.parse(localStorage.getItem('rp_cache_funcs')||'[]');
-let rests=JSON.parse(localStorage.getItem('rp_cache_rests')||'[]');
-let locais=JSON.parse(localStorage.getItem('rp_cache_locais')||'[]');
-let restricoes=JSON.parse(localStorage.getItem('rp_cache_restricoes')||'[]');
-let centrosCusto=JSON.parse(localStorage.getItem('rp_cache_cc')||'[]');
-let pedidos=JSON.parse(localStorage.getItem('pedidos_rp_v8')||'[]');
-let view='pedido',aview='lista',enviando=false;
-let operador=null,restSel=null,ultimoPed=null,temRestricao=null;
+var senhaAtual=localStorage.getItem('rp_senha')||'@Rh_rp';
+var cod=null,codExp=null,codEsqueci=null,codEsqueciExp=null;
+var funcs=JSON.parse(localStorage.getItem('rp_cache_funcs')||'[]');
+var rests=JSON.parse(localStorage.getItem('rp_cache_rests')||'[]');
+var locais=JSON.parse(localStorage.getItem('rp_cache_locais')||'[]');
+var restricoes=JSON.parse(localStorage.getItem('rp_cache_restricoes')||'[]');
+var centrosCusto=JSON.parse(localStorage.getItem('rp_cache_cc')||'[]');
+var pedidos=JSON.parse(localStorage.getItem('pedidos_rp_v8')||'[]');
+var view='pedido',aview='lista',enviando=false;
+var operador=null,restSel=null,ultimoPed=null,temRestricao=null;
 
 const salvar=()=>localStorage.setItem('pedidos_rp_v8',JSON.stringify(pedidos));
 const hoje=()=>new Date().toLocaleDateString('pt-BR');
