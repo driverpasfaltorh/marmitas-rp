@@ -644,7 +644,7 @@ function buildAdm(){
 
   if(aview==='exportar'){
     var td=doDia(null,isRH),li='';
-    td.forEach(function(p){li+='<tr><td>'+(p.protocolo||'')+'</td><td>'+(p.matricula||'')+'</td><td>'+p.nome+'</td><td>'+p.tipo+'</td><td>'+p.local+'</td><td>'+p.data+'</td><td>'+(p.hora||'')+'</td><td>'+(p.restaurante||'')+'</td><td>'+(p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):'')+'</td><td>'+(p.ccId||'')+'</td><td>'+(p.ccDesc||'')+'</td></tr>';});
+    td.forEach(function(p){li+='<tr><td>'+(p.protocolo||'')+'</td><td>'+(p.matricula||'')+'</td><td>'+p.nome+'</td><td>'+p.tipo+'</td><td>'+p.local+'</td><td>'+p.data+'</td><td>'+(p.tipo==='Almoço'?'11:00':'18:00')+'</td><td>'+(p.restaurante||'')+'</td><td>'+(p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):'')+'</td><td>'+getCcParts(p).id+'</td><td>'+getCcParts(p).desc+'</td></tr>';});
     return '<div class="logo"><h1>Exportar dados</h1><p>'+hj+'</p></div>'+nav+
       '<div class="card">'+(td.length===0?'<p class="empty">Nenhum pedido hoje</p>':
       '<button class="btn-exp" onclick="baixarCSV()">Baixar .CSV</button>'+
@@ -754,10 +754,21 @@ function envWA(tipo){
   window.open('https://wa.me/'+restSel.whatsapp+'?text='+encodeURIComponent(corpo(tipo,cc,true)),'_blank');
 }
 
+function getCcParts(p){
+  if(p.ccId||p.ccDesc)return{id:p.ccId||'',desc:p.ccDesc||''};
+  if(p.centroCusto){var pts=p.centroCusto.split(' — ');return{id:pts[0]||'',desc:pts.slice(1).join(' — ').replace(/\s*\(.*\)\s*$/,'').trim()};}
+  return{id:'',desc:''};
+}
 function baixarCSV(){
   var td=doDia(null,operador&&operador.tipo==='rh');
-  var c='Protocolo,Matrícula,Nome,Pedido,Local de Entrega,Data,Hora,Restaurante,Restrições,ID Centro de Custo,Descrição Centro de Custo\n';
-  td.forEach(function(p){c+='"'+(p.protocolo||'')+'","'+(p.matricula||'')+'","'+p.nome+'","'+p.tipo+'","'+p.local+'","'+p.data+'","'+(p.hora||'')+'","'+(p.restaurante||'')+'","'+(p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):'')+'","'+(p.ccId||'')+'","'+(p.ccDesc||'')+'"\n';});
+  var c='Protocolo,Matrícula,Nome,Pedido,Local de Entrega,Data,Hora Entrega,Restaurante,Restrições,ID Centro de Custo,Descrição Centro de Custo\n';
+  td.forEach(function(p){
+    var hr=p.tipo==='Almoço'?'11:00':'18:00';
+    var cc=p.centroCusto||'';
+    var ccId=p.ccId||(cc.indexOf(' — ')>=0?cc.split(' — ')[0]:'');
+    var ccDesc=p.ccDesc||(cc.indexOf(' — ')>=0?cc.split(' — ').slice(1).join(' — ').replace(/\s*\(.*\)\s*$/,'').trim():'');
+    c+='"'+(p.protocolo||'')+'","'+(p.matricula||'')+'","'+p.nome+'","'+p.tipo+'","'+p.local+'","'+p.data+'","'+hr+'","'+(p.restaurante||'')+'","'+(p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):'')+'",' +'"'+ccId+'","'+ccDesc+'"\n';
+  });
   var b=new Blob(['\uFEFF'+c],{type:'text/csv;charset=utf-8'});
   var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='pedidos_rp_'+hoje().replace(/\//g,'-')+'.csv';a.click();URL.revokeObjectURL(u);
 }
