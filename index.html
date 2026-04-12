@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/Deivis/Downloads/index_9.html -->
-<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pedido de Refeição — RP Construbase</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -98,14 +98,14 @@ table.etab tr:nth-child(even){background:#fafafa;}
     <h2>Painel RH</h2>
     <p>Digite sua matrícula e senha</p>
     <label>Matrícula</label>
-    <input type="text" id="lm" placeholder="Sua matrícula" onkeydown="if(event.key===&#39;Enter&#39;)document.getElementById(&#39;ls&#39;).focus()">
+    <input type="text" id="lm" placeholder="Sua matrícula" onkeydown="if(event.key==='Enter')document.getElementById('ls').focus()"/>
     <label>Senha</label>
-    <input type="password" id="ls" placeholder="••••••" onkeydown="if(event.key===&#39;Enter&#39;)loginEnc()">
+    <input type="password" id="ls" placeholder="••••••" onkeydown="if(event.key==='Enter')loginEnc()"/>
     <p id="le" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Matrícula ou senha incorreta.</p>
     <button class="btn-g" onclick="loginEnc()">Entrar</button>
     <div style="text-align:center;margin:12px 0;font-size:12px;color:#aaa">— ou —</div>
     <label>Senha RH / Master</label>
-    <input type="password" id="lsr" placeholder="Senha RH ou master" onkeydown="if(event.key===&#39;Enter&#39;)loginRH()">
+    <input type="password" id="lsr" placeholder="Senha RH ou master" onkeydown="if(event.key==='Enter')loginRH()"/>
     <p id="ler" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senha incorreta.</p>
     <button class="btn-o" style="margin-top:0" onclick="loginRH()">Entrar como RH</button>
     <span class="lk" onclick="abrirEsq()">Esqueci minha senha</span>
@@ -117,11 +117,11 @@ table.etab tr:nth-child(even){background:#fafafa;}
   <div class="ov-card">
     <h2>Primeiro acesso</h2>
     <p>Olá, <strong id="tn"></strong>! Crie sua senha pessoal.</p>
-    <input type="hidden" id="tm">
+    <input type="hidden" id="tm"/>
     <label>Nova senha</label>
-    <input type="password" id="tnv" placeholder="Mínimo 4 caracteres">
+    <input type="password" id="tnv" placeholder="Mínimo 4 caracteres"/>
     <label>Confirmar senha</label>
-    <input type="password" id="tcf" placeholder="Repita a senha" onkeydown="if(event.key===&#39;Enter&#39;)salvarTrocar()">
+    <input type="password" id="tcf" placeholder="Repita a senha" onkeydown="if(event.key==='Enter')salvarTrocar()"/>
     <p id="tce" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">As senhas não coincidem.</p>
     <button class="btn-g" onclick="salvarTrocar()">Salvar minha senha</button>
   </div>
@@ -134,13 +134,13 @@ table.etab tr:nth-child(even){background:#fafafa;}
     <div id="esq-s1"><button class="btn-g" id="esq-btn" onclick="envCodEsq()">Enviar código</button><button class="btn-o" onclick="fecharEsq()">Cancelar</button></div>
     <div id="esq-s2" style="display:none">
       <label>Código recebido</label>
-      <input type="text" id="esq-cod" placeholder="000000" maxlength="6" style="letter-spacing:4px;font-size:22px;text-align:center">
+      <input type="text" id="esq-cod" placeholder="000000" maxlength="6" style="letter-spacing:4px;font-size:22px;text-align:center"/>
       <p id="esq-ce" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Código incorreto.</p>
       <button class="btn-g" onclick="verCodEsq()">Verificar</button><button class="btn-o" onclick="fecharEsq()">Cancelar</button>
     </div>
     <div id="esq-s3" style="display:none">
-      <label>Nova senha</label><input type="password" id="esq-nv" placeholder="Nova senha">
-      <label>Confirmar</label><input type="password" id="esq-cf" placeholder="Repita">
+      <label>Nova senha</label><input type="password" id="esq-nv" placeholder="Nova senha"/>
+      <label>Confirmar</label><input type="password" id="esq-cf" placeholder="Repita"/>
       <p id="esq-cfe" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senhas não coincidem.</p>
       <button class="btn-g" onclick="salvarEsq()">Salvar nova senha</button><button class="btn-o" onclick="fecharEsq()">Cancelar</button>
     </div>
@@ -154,13 +154,13 @@ table.etab tr:nth-child(even){background:#fafafa;}
     <div id="alt-s1"><button class="btn-g" id="alt-btn" onclick="envCodAlt()">Enviar código</button><button class="btn-o" onclick="fecharAlt()">Cancelar</button></div>
     <div id="alt-s2" style="display:none">
       <label>Código recebido</label>
-      <input type="text" id="alt-cod" placeholder="000000" maxlength="6" style="letter-spacing:4px;font-size:22px;text-align:center">
+      <input type="text" id="alt-cod" placeholder="000000" maxlength="6" style="letter-spacing:4px;font-size:22px;text-align:center"/>
       <p id="alt-ce" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Código incorreto.</p>
       <button class="btn-g" onclick="verCodAlt()">Verificar</button><button class="btn-o" onclick="fecharAlt()">Cancelar</button>
     </div>
     <div id="alt-s3" style="display:none">
-      <label>Nova senha</label><input type="password" id="alt-nv" placeholder="Nova senha">
-      <label>Confirmar</label><input type="password" id="alt-cf" placeholder="Repita">
+      <label>Nova senha</label><input type="password" id="alt-nv" placeholder="Nova senha"/>
+      <label>Confirmar</label><input type="password" id="alt-cf" placeholder="Repita"/>
       <p id="alt-cfe" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senhas não coincidem.</p>
       <button class="btn-g" onclick="salvarAlt()">Salvar nova senha</button><button class="btn-o" onclick="fecharAlt()">Cancelar</button>
     </div>
@@ -171,7 +171,7 @@ table.etab tr:nth-child(even){background:#fafafa;}
   <div class="ov-card">
     <h2>Buscar funcionário</h2>
     <p>Digite o nome para pesquisar</p>
-    <input type="text" id="busca-inp" placeholder="Ex: Carlos..." oninput="filtraBusca(this.value)" autocomplete="off">
+    <input type="text" id="busca-inp" placeholder="Ex: Carlos..." oninput="filtraBusca(this.value)" autocomplete="off"/>
     <div id="busca-res" style="max-height:280px;overflow-y:auto;border:1px solid #eee;border-radius:8px;"></div>
     <button class="btn-o" onclick="fecharBusca()" style="margin-top:1rem">Fechar</button>
   </div>
@@ -182,7 +182,7 @@ table.etab tr:nth-child(even){background:#fafafa;}
     <h2>Limpar pedidos</h2>
     <p>Digite a senha do RH ou a senha master para confirmar.</p>
     <label>Senha</label>
-    <input type="password" id="limp-s" placeholder="••••••">
+    <input type="password" id="limp-s" placeholder="••••••"/>
     <p id="limp-e" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senha incorreta.</p>
     <button class="btn-g" style="background:#e24b4a" onclick="confLimpar()">Confirmar</button>
     <button class="btn-o" onclick="fecharLimpar()">Cancelar</button>
@@ -191,7 +191,7 @@ table.etab tr:nth-child(even){background:#fafafa;}
 
 <div class="container"><div id="app"></div></div>
 
-<script src="./index_files/email.min.js.download"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 // Config
 var EJSKEY='d2AUQ-6X7bl4yUhuU';
@@ -593,13 +593,13 @@ function buildComp(){
 function buildAdm(){
   var alm=doDia('Almoço'),jan=doDia('Janta'),hj=hoje(),rd=restsDia();
   var isRH=operador&&operador.tipo==='rh';
-  var nav='<div class="nav-tabs"><button class="tab" onclick="view='pedido';render()">Fazer pedido</button><button class="tab active">Painel RH</button></div>'+
+  var nav='<div class="nav-tabs"><button class="tab" onclick="view=&apos;pedido&apos;;render()">Fazer pedido</button><button class="tab active">Painel RH</button></div>'+
     '<div style="font-size:12px;color:#666;margin-bottom:1rem">Logado: <strong>'+(operador?operador.n:'—')+'</strong><span class="nb '+(operador&&operador.tipo==='rh'?'nb-rh':'nb-enc')+'">'+(operador?operador.tipo.toUpperCase():'')+'</span></div>'+
     '<div class="adm-tabs">'+
-    '<button class="adm-tab '+(aview==='lista'?'active':'')+'" onclick="aview='lista';render()">Lista</button>'+
-    '<button class="adm-tab '+(aview==='enviar'?'active':'')+'" onclick="aview='enviar';render()">Enviar</button>'+
-    '<button class="adm-tab '+(aview==='exportar'?'active':'')+'" onclick="aview='exportar';render()">Exportar</button>'+
-    '<button class="adm-tab '+(aview==='config'?'active':'')+'" onclick="aview='config';render()">Config</button>'+
+    '<button class="adm-tab '+(aview==='lista'?'active':'')+'" onclick="aview=&apos;lista&apos;;render()">Lista</button>'+
+    '<button class="adm-tab '+(aview==='enviar'?'active':'')+'" onclick="aview=&apos;enviar&apos;;render()">Enviar</button>'+
+    '<button class="adm-tab '+(aview==='exportar'?'active':'')+'" onclick="aview=&apos;exportar&apos;;render()">Exportar</button>'+
+    '<button class="adm-tab '+(aview==='config'?'active':'')+'" onclick="aview=&apos;config&apos;;render()">Config</button>'+
     '</div>';
 
   if(aview==='lista'){
@@ -773,5 +773,5 @@ window.addEventListener('load',function(){
 render();
 load();
 </script>
-
-</body></html>
+</body>
+</html>
