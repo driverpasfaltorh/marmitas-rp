@@ -644,11 +644,11 @@ function buildAdm(){
 
   if(aview==='exportar'){
     var td=doDia(null,isRH),li='';
-    td.forEach(function(p){li+='<tr><td>'+(p.protocolo||'')+'</td><td>'+(p.matricula||'')+'</td><td>'+p.nome+'</td><td>'+p.tipo+'</td><td>'+p.local+'</td><td>'+p.data+'</td><td>'+(p.hora||'')+'</td><td>'+(p.restaurante||'')+'</td><td>'+(p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):'')+'</td><td>'+(p.centroCusto||'')+'</td></tr>';});
+    td.forEach(function(p){li+='<tr><td>'+(p.protocolo||'')+'</td><td>'+(p.matricula||'')+'</td><td>'+p.nome+'</td><td>'+p.tipo+'</td><td>'+p.local+'</td><td>'+p.data+'</td><td>'+(p.hora||'')+'</td><td>'+(p.restaurante||'')+'</td><td>'+(p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):'')+'</td><td>'+(p.ccId||'')+'</td><td>'+(p.ccDesc||'')+'</td></tr>';});
     return '<div class="logo"><h1>Exportar dados</h1><p>'+hj+'</p></div>'+nav+
       '<div class="card">'+(td.length===0?'<p class="empty">Nenhum pedido hoje</p>':
       '<button class="btn-exp" onclick="baixarCSV()">Baixar .CSV</button>'+
-      '<div class="ox"><table class="etab"><thead><tr><th>Protocolo</th><th>Matrícula</th><th>Nome</th><th>Pedido</th><th>Local</th><th>Data</th><th>Hora</th><th>Restaurante</th><th>Restrições</th><th>Centro de Custo</th></tr></thead><tbody>'+li+'</tbody></table></div>')+'</div>';
+      '<div class="ox"><table class="etab"><thead><tr><th>Protocolo</th><th>Matrícula</th><th>Nome</th><th>Pedido</th><th>Local</th><th>Data</th><th>Hora</th><th>Restaurante</th><th>Restrições</th><th>ID Centro de Custo</th><th>Descrição Centro de Custo</th></tr></thead><tbody>'+li+'</tbody></table></div>')+'</div>';
   }
 
   if(aview==='config'){
@@ -729,7 +729,10 @@ function envEmail(tipo){
   var btn=document.getElementById(bid);
   if(btn){btn.disabled=true;btn.innerHTML='<span class="spin"></span>Enviando...';}
   var cc=document.getElementById('cc-hid')?document.getElementById('cc-hid').value:'';
-  if(cc){var hj=hoje();pedidos=pedidos.map(function(p){return p.data===hj&&p.tipo===tipo&&p.operador===(operador?operador.m:null)?Object.assign({},p,{centroCusto:cc}):p;});salvar();}
+  if(!cc){alert('Selecione o centro de custo antes de enviar.');if(btn){btn.disabled=false;btn.innerHTML='Reenviar';}enviando=false;return;}
+  var ccP=cc.split(' — ');var ccId=ccP[0]||'';var ccDesc=ccP.slice(1).join(' — ').replace(/\s*\(.*\)\s*$/,'').trim();
+  var hj=hoje();var isRH2=operador&&operador.tipo==='rh';
+  pedidos=pedidos.map(function(p){if(p.data!==hj||p.tipo!==tipo)return p;if(isRH2||!operador||p.operador===operador.m)return Object.assign({},p,{centroCusto:cc,ccId:ccId,ccDesc:ccDesc});return p;});salvar();
   emailjs.send(SVC,TPL,{to_email:restSel.email,cc_email:EMAIL_RH+','+EMAIL_DP,subject:'Pedido de Refeição - '+tipo+' - RP Construbase - '+hoje(),message:corpo(tipo,cc,false)})
     .then(function(){
       alert('E-mail de '+tipo+' enviado para '+restSel.nome+'!');
@@ -744,14 +747,17 @@ function envWA(tipo){
   if(!restSel){alert('Selecione o restaurante primeiro.');return;}
   if(!restSel.whatsapp){alert('Este restaurante não tem WhatsApp cadastrado.');return;}
   var cc=document.getElementById('cc-hid')?document.getElementById('cc-hid').value:'';
-  if(cc){var hj=hoje();pedidos=pedidos.map(function(p){return p.data===hj&&p.tipo===tipo&&p.operador===(operador?operador.m:null)?Object.assign({},p,{centroCusto:cc}):p;});salvar();}
+  if(!cc){alert('Selecione o centro de custo antes de enviar.');if(btn){btn.disabled=false;btn.innerHTML='Reenviar';}enviando=false;return;}
+  var ccP=cc.split(' — ');var ccId=ccP[0]||'';var ccDesc=ccP.slice(1).join(' — ').replace(/\s*\(.*\)\s*$/,'').trim();
+  var hj=hoje();var isRH2=operador&&operador.tipo==='rh';
+  pedidos=pedidos.map(function(p){if(p.data!==hj||p.tipo!==tipo)return p;if(isRH2||!operador||p.operador===operador.m)return Object.assign({},p,{centroCusto:cc,ccId:ccId,ccDesc:ccDesc});return p;});salvar();
   window.open('https://wa.me/'+restSel.whatsapp+'?text='+encodeURIComponent(corpo(tipo,cc,true)),'_blank');
 }
 
 function baixarCSV(){
   var td=doDia(null,operador&&operador.tipo==='rh');
-  var c='Protocolo,Matrícula,Nome,Pedido,Local de Entrega,Data,Hora,Restaurante,Restrições,Centro de Custo\n';
-  td.forEach(function(p){c+='"'+(p.protocolo||'')+'","'+(p.matricula||'')+'","'+p.nome+'","'+p.tipo+'","'+p.local+'","'+p.data+'","'+(p.hora||'')+'","'+(p.restaurante||'')+'","'+(p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):'')+'","'+(p.centroCusto||'')+'"\n';});
+  var c='Protocolo,Matrícula,Nome,Pedido,Local de Entrega,Data,Hora,Restaurante,Restrições,ID Centro de Custo,Descrição Centro de Custo\n';
+  td.forEach(function(p){c+='"'+(p.protocolo||'')+'","'+(p.matricula||'')+'","'+p.nome+'","'+p.tipo+'","'+p.local+'","'+p.data+'","'+(p.hora||'')+'","'+(p.restaurante||'')+'","'+(p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):'')+'","'+(p.ccId||'')+'","'+(p.ccDesc||'')+'"\n';});
   var b=new Blob(['\uFEFF'+c],{type:'text/csv;charset=utf-8'});
   var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='pedidos_rp_'+hoje().replace(/\//g,'-')+'.csv';a.click();URL.revokeObjectURL(u);
 }
