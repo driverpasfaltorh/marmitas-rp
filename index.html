@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/Deivis/Downloads/index_3.html -->
+<!-- saved from url=(0046)file:///C:/Users/Deivis/Downloads/index_8.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pedido de Refeição — RP Construbase</title>
-<script src="./index_files/email.min.js.download"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:Arial,sans-serif;background:#f4f4f4;color:#222;min-height:100vh;}
@@ -17,491 +16,504 @@ label{display:block;font-size:13px;color:#555;margin-bottom:6px;font-weight:600;
 input,select,textarea{width:100%;margin-bottom:1rem;font-size:15px;padding:10px 12px;border:1px solid #ccc;border-radius:8px;background:#fff;color:#222;}
 textarea{resize:vertical;min-height:70px;font-family:Arial,sans-serif;}
 input:focus,select:focus,textarea:focus{outline:none;border-color:#1D9E75;}
-.btn-primary{width:100%;padding:13px;background:#1D9E75;color:white;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;}
-.btn-primary:hover{background:#0F6E56;}
-.btn-primary:disabled{background:#ccc;color:#888;cursor:not-allowed;}
-.btn-secondary{width:100%;padding:13px;background:#fff;color:#1D9E75;border:2px solid #1D9E75;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;margin-top:10px;}
-.btn-secondary:hover{background:#f0f9f5;}
+.btn-g{width:100%;padding:13px;background:#1D9E75;color:white;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;}
+.btn-g:hover{background:#0F6E56;}
+.btn-g:disabled{background:#ccc;color:#888;cursor:not-allowed;}
+.btn-o{width:100%;padding:13px;background:#fff;color:#1D9E75;border:2px solid #1D9E75;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;margin-top:10px;}
+.btn-o:hover{background:#f0f9f5;}
 .btn-wa{width:100%;padding:13px;background:#25D366;color:white;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px;}
 .aviso{background:#f0f9f5;border:1px solid #b2e0d0;border-radius:8px;padding:10px 14px;margin-bottom:1rem;font-size:13px;color:#0F6E56;}
-.aviso.encerrado{background:#f9f9f9;border-color:#ddd;color:#999;}
+.aviso.enc{background:#f9f9f9;border-color:#ddd;color:#999;}
 .nav-tabs{display:flex;gap:8px;margin-bottom:1.5rem;}
 .tab{flex:1;text-align:center;padding:9px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid #ddd;color:#666;background:#fff;}
 .tab.active{background:#1D9E75;color:white;border-color:#1D9E75;}
-.grupo-label{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:0.5px;padding:10px 0 4px;}
-.pedido-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:14px;}
-.pedido-item:last-child{border-bottom:none;}
-.pedido-nome{color:#222;font-weight:600;}
+.grp-lbl{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:0.5px;padding:10px 0 4px;}
+.ped-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:14px;}
+.ped-item:last-child{border-bottom:none;}
+.ped-nome{color:#222;font-weight:600;}
 .total-bar{display:flex;justify-content:space-between;padding:10px 0 0;font-size:14px;font-weight:700;color:#222;border-top:1px solid #e0e0e0;margin-top:8px;}
 .badge{display:inline-block;font-size:12px;padding:3px 10px;border-radius:6px;margin-left:6px;font-weight:600;}
-.badge-alm{background:#e6f1fb;color:#185FA5;}
-.badge-jan{background:#faeeda;color:#854F0B;}
-.btn-enviar{width:100%;padding:13px;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;margin-top:0.5rem;color:white;}
-.btn-enviar.alm{background:#185FA5;}
-.btn-enviar.jan{background:#854F0B;}
-.btn-enviar:disabled{background:#ccc;cursor:not-allowed;}
+.ba{background:#e6f1fb;color:#185FA5;}
+.bj{background:#faeeda;color:#854F0B;}
+.btn-env{width:100%;padding:13px;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;margin-top:0.5rem;color:white;}
+.btn-env.alm{background:#185FA5;}
+.btn-env.jan{background:#854F0B;}
+.btn-env:disabled{background:#ccc;cursor:not-allowed;}
 .btn-sm{font-size:12px;padding:4px 10px;border-radius:6px;cursor:pointer;background:#fff;border:1px solid #ccc;color:#666;}
-.empty-state{text-align:center;padding:2rem;color:#bbb;font-size:14px;}
-.admin-tabs{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap;}
-.admin-tab{flex:1;text-align:center;padding:7px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid #ddd;color:#666;background:#fff;min-width:70px;}
-.admin-tab.active{background:#333;color:white;border-color:#333;}
+.empty{text-align:center;padding:2rem;color:#bbb;font-size:14px;}
+.adm-tabs{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap;}
+.adm-tab{flex:1;text-align:center;padding:7px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid #ddd;color:#666;background:#fff;min-width:60px;}
+.adm-tab.active{background:#333;color:white;border-color:#333;}
 .info-box{background:#f9f9f9;border-radius:8px;padding:10px 14px;font-size:13px;color:#666;margin-bottom:1rem;line-height:1.6;}
-.spinner{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
-@keyframes spin{to{transform:rotate(360deg);}}
-.nome-sugerido{font-size:13px;color:#1D9E75;margin-top:-8px;margin-bottom:10px;padding:6px 10px;background:#f0f9f5;border-radius:6px;cursor:pointer;}
-.matricula-erro{font-size:12px;color:#e24b4a;margin-top:-8px;margin-bottom:10px;}
-.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(244,244,244,0.97);z-index:10;display:flex;align-items:center;justify-content:center;padding:1rem;overflow-y:auto;}
-.overlay-card{background:#fff;border-radius:12px;padding:2rem;width:100%;max-width:360px;border:1px solid #e0e0e0;}
-.overlay-card h2{font-size:18px;font-weight:700;margin-bottom:0.5rem;}
-.overlay-card p{font-size:13px;color:#666;margin-bottom:1.5rem;}
-table.export-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:0.5rem;}
-table.export-table th{background:#f0f0f0;padding:6px 8px;text-align:left;font-weight:700;border:1px solid #ddd;}
-table.export-table td{padding:6px 8px;border:1px solid #ddd;color:#333;}
-table.export-table tr:nth-child(even){background:#fafafa;}
-.btn-export{font-size:13px;padding:8px 16px;border-radius:8px;cursor:pointer;background:#fff;border:1px solid #1D9E75;color:#1D9E75;font-weight:600;margin-bottom:1rem;}
-.overflow-x{overflow-x:auto;}
-.protocolo-box{background:#f0f9f5;border:1px solid #b2e0d0;border-radius:10px;padding:14px 16px;margin:14px 0;text-align:center;}
-.protocolo-box .num{font-size:26px;font-weight:700;color:#1D9E75;letter-spacing:3px;}
-.protocolo-box .lbl{font-size:11px;color:#666;margin-top:2px;text-transform:uppercase;letter-spacing:1px;}
-.comp-linha{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid #f0f0f0;}
-.comp-linha:last-child{border-bottom:none;}
-.comp-linha .key{color:#888;min-width:35%;}
-.comp-linha .val{font-weight:700;color:#222;text-align:right;}
+.spin{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:sp 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
+@keyframes sp{to{transform:rotate(360deg);}}
+.sug{font-size:13px;color:#1D9E75;margin-top:-8px;margin-bottom:10px;padding:6px 10px;background:#f0f9f5;border-radius:6px;cursor:pointer;}
+.mat-err{font-size:12px;color:#e24b4a;margin-top:-8px;margin-bottom:10px;}
+.ov{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(244,244,244,0.97);z-index:10;display:flex;align-items:center;justify-content:center;padding:1rem;overflow-y:auto;}
+.ov-card{background:#fff;border-radius:12px;padding:2rem;width:100%;max-width:360px;border:1px solid #e0e0e0;}
+.ov-card h2{font-size:18px;font-weight:700;margin-bottom:0.5rem;}
+.ov-card p{font-size:13px;color:#666;margin-bottom:1.5rem;}
+.proto-box{background:#f0f9f5;border:1px solid #b2e0d0;border-radius:10px;padding:14px 16px;margin:14px 0;text-align:center;}
+.proto-box .num{font-size:26px;font-weight:700;color:#1D9E75;letter-spacing:3px;}
+.proto-box .lbl{font-size:11px;color:#666;margin-top:2px;text-transform:uppercase;letter-spacing:1px;}
+.cl{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid #f0f0f0;}
+.cl:last-child{border-bottom:none;}
+.cl .k{color:#888;min-width:35%;}
+.cl .v{font-weight:700;color:#222;text-align:right;}
 .sep{border-top:1px solid #f0f0f0;padding-top:1rem;margin-top:1rem;}
-.sim-nao{display:flex;gap:10px;margin-bottom:1rem;}
-.sim-nao button{flex:1;padding:11px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;border:2px solid #ddd;background:#fff;color:#666;}
-.sim-nao button.ativo-sim{border-color:#e24b4a;background:#fcebeb;color:#A32D2D;}
-.sim-nao button.ativo-nao{border-color:#1D9E75;background:#f0f9f5;color:#0F6E56;}
-.restricao-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f5f5f5;cursor:pointer;}
-.restricao-item:last-child{border-bottom:none;}
-.restricao-item input[type=checkbox]{width:20px;height:20px;margin:0;cursor:pointer;accent-color:#1D9E75;flex-shrink:0;}
-.restricao-item span{font-size:14px;color:#333;}
-.restricao-badge{display:inline-block;background:#fcebeb;color:#A32D2D;font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600;margin-top:3px;}
-.busca-wrapper{position:relative;margin-bottom:6px;}
-.busca-wrapper input{margin-bottom:0;}
-.busca-ico{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:18px;color:#1D9E75;}
-.repetir-box{background:#faeeda;border:1px solid #FAC775;border-radius:10px;padding:14px;margin-bottom:1rem;}
-.repetir-box h3{font-size:14px;font-weight:700;color:#633806;margin-bottom:8px;}
-.repetir-box p{font-size:12px;color:#854F0B;margin-bottom:10px;}
-.nivel-badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600;margin-left:6px;}
-.nivel-rh{background:#e6f1fb;color:#185FA5;}
-.nivel-enc{background:#eaf3de;color:#3B6D11;}
-.link-esqueci{font-size:12px;color:#1D9E75;cursor:pointer;text-decoration:underline;display:block;text-align:center;margin-top:8px;}
-.busca-item{padding:10px 12px;font-size:14px;cursor:pointer;border-bottom:1px solid #f5f5f5;}
-.busca-item:hover{background:#f0f9f5;}
-.busca-item .mat{font-size:11px;color:#999;margin-top:2px;}
+.sn{display:flex;gap:10px;margin-bottom:1rem;}
+.sn button{flex:1;padding:11px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;border:2px solid #ddd;background:#fff;color:#666;}
+.sn button.ss{border-color:#e24b4a;background:#fcebeb;color:#A32D2D;}
+.sn button.sn2{border-color:#1D9E75;background:#f0f9f5;color:#0F6E56;}
+.rest-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f5f5f5;}
+.rest-item:last-child{border-bottom:none;}
+.rest-item input[type=checkbox]{width:20px;height:20px;margin:0;cursor:pointer;accent-color:#1D9E75;flex-shrink:0;}
+.rest-item span{font-size:14px;color:#333;}
+.rest-badge{display:inline-block;background:#fcebeb;color:#A32D2D;font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600;margin-top:3px;}
+.bw{position:relative;margin-bottom:6px;}
+.bw input{margin-bottom:0;}
+.bw-ico{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:18px;color:#1D9E75;}
+.bi{padding:10px 12px;font-size:14px;cursor:pointer;border-bottom:1px solid #f5f5f5;}
+.bi:hover{background:#f0f9f5;}
+.bi .bm{font-size:11px;color:#999;margin-top:2px;}
+.rep-box{background:#faeeda;border:1px solid #FAC775;border-radius:10px;padding:14px;margin-bottom:1rem;}
+.rep-box h3{font-size:14px;font-weight:700;color:#633806;margin-bottom:8px;}
+.rep-box p{font-size:12px;color:#854F0B;margin-bottom:10px;}
+.nb{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600;margin-left:6px;}
+.nb-rh{background:#e6f1fb;color:#185FA5;}
+.nb-enc{background:#eaf3de;color:#3B6D11;}
+.lk{font-size:12px;color:#1D9E75;cursor:pointer;text-decoration:underline;display:block;text-align:center;margin-top:8px;}
+table.etab{width:100%;border-collapse:collapse;font-size:12px;margin-top:0.5rem;}
+table.etab th{background:#f0f0f0;padding:6px 8px;text-align:left;font-weight:700;border:1px solid #ddd;}
+table.etab td{padding:6px 8px;border:1px solid #ddd;color:#333;}
+table.etab tr:nth-child(even){background:#fafafa;}
+.btn-exp{font-size:13px;padding:8px 16px;border-radius:8px;cursor:pointer;background:#fff;border:1px solid #1D9E75;color:#1D9E75;font-weight:600;margin-bottom:1rem;}
+.ox{overflow-x:auto;}
 </style>
 </head>
 <body>
-<div id="ov-login" class="overlay" style="display: none;">
-  <div class="overlay-card">
+
+<div id="ov-login" class="ov" style="display:none">
+  <div class="ov-card">
     <h2>Painel RH</h2>
     <p>Digite sua matrícula e senha</p>
     <label>Matrícula</label>
-    <input type="text" id="login-mat" placeholder="Digite sua matrícula" onkeydown="if(event.key===&#39;Enter&#39;)document.getElementById(&#39;login-senha&#39;).focus()">
+    <input type="text" id="lm" placeholder="Sua matrícula" onkeydown="if(event.key===&#39;Enter&#39;)document.getElementById(&#39;ls&#39;).focus()">
     <label>Senha</label>
-    <input type="password" id="login-senha" placeholder="••••••" onkeydown="if(event.key===&#39;Enter&#39;)loginSenha()">
-    <p id="login-senha-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Matrícula ou senha incorreta.</p>
-    <button class="btn-primary" onclick="loginSenha()">Entrar</button>
+    <input type="password" id="ls" placeholder="••••••" onkeydown="if(event.key===&#39;Enter&#39;)loginEnc()">
+    <p id="le" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Matrícula ou senha incorreta.</p>
+    <button class="btn-g" onclick="loginEnc()">Entrar</button>
     <div style="text-align:center;margin:12px 0;font-size:12px;color:#aaa">— ou —</div>
-    <label>Senha master / RH</label>
-    <input type="password" id="login-senha-rh" placeholder="Senha RH ou master" onkeydown="if(event.key===&#39;Enter&#39;)loginSenhaRH()">
-    <p id="login-senha-rh-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senha incorreta.</p>
-    <button class="btn-secondary" style="margin-top:0" onclick="loginSenhaRH()">Entrar como RH</button>
-    <span class="link-esqueci" onclick="abrirEsqueci()">Esqueci minha senha</span>
-    <button class="btn-secondary" onclick="fecharLogin()">Voltar</button>
+    <label>Senha RH / Master</label>
+    <input type="password" id="lsr" placeholder="Senha RH ou master" onkeydown="if(event.key===&#39;Enter&#39;)loginRH()">
+    <p id="ler" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senha incorreta.</p>
+    <button class="btn-o" style="margin-top:0" onclick="loginRH()">Entrar como RH</button>
+    <span class="lk" onclick="abrirEsq()">Esqueci minha senha</span>
+    <button class="btn-o" onclick="fecharLogin()">Voltar</button>
   </div>
 </div>
 
-<div id="ov-trocar" class="overlay" style="display:none">
-  <div class="overlay-card">
+<div id="ov-trocar" class="ov" style="display:none">
+  <div class="ov-card">
     <h2>Primeiro acesso</h2>
-    <p>Olá, <strong id="trocar-nome"></strong>! Crie sua senha pessoal.</p>
-    <input type="hidden" id="trocar-mat">
+    <p>Olá, <strong id="tn"></strong>! Crie sua senha pessoal.</p>
+    <input type="hidden" id="tm">
     <label>Nova senha</label>
-    <input type="password" id="trocar-nova" placeholder="Mínimo 4 caracteres">
+    <input type="password" id="tnv" placeholder="Mínimo 4 caracteres">
     <label>Confirmar senha</label>
-    <input type="password" id="trocar-conf" placeholder="Repita a senha" onkeydown="if(event.key===&#39;Enter&#39;)salvarTrocarSenha()">
-    <p id="trocar-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">As senhas não coincidem.</p>
-    <button class="btn-primary" onclick="salvarTrocarSenha()">Salvar minha senha</button>
+    <input type="password" id="tcf" placeholder="Repita a senha" onkeydown="if(event.key===&#39;Enter&#39;)salvarTrocar()">
+    <p id="tce" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">As senhas não coincidem.</p>
+    <button class="btn-g" onclick="salvarTrocar()">Salvar minha senha</button>
   </div>
 </div>
 
-<div id="ov-esqueci" class="overlay" style="display:none">
-  <div class="overlay-card">
+<div id="ov-esq" class="ov" style="display:none">
+  <div class="ov-card">
     <h2>Recuperar senha</h2>
-    <p id="esqueci-desc">Um código será enviado para <a href="file:///C:/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="86f4eec6f4f6e5e9e8f5f2f4f3e4e7f5e3a8e5e9eba8e4f4">[email&nbsp;protected]</a></p>
-    <div id="esqueci-s1"><button class="btn-primary" id="btn-esqueci-cod" onclick="enviarCodigoEsqueci()">Enviar código</button><button class="btn-secondary" onclick="fecharEsqueci()">Cancelar</button></div>
-    <div id="esqueci-s2" style="display:none">
+    <p id="esq-desc">Um código será enviado para rh@rpconstrubase.com.br</p>
+    <div id="esq-s1"><button class="btn-g" id="esq-btn" onclick="envCodEsq()">Enviar código</button><button class="btn-o" onclick="fecharEsq()">Cancelar</button></div>
+    <div id="esq-s2" style="display:none">
       <label>Código recebido</label>
-      <input type="text" id="esqueci-cod" placeholder="000000" maxlength="6" style="letter-spacing:4px;font-size:22px;text-align:center">
-      <p id="esqueci-cod-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Código incorreto.</p>
-      <button class="btn-primary" onclick="verificarCodigoEsqueci()">Verificar</button>
-      <button class="btn-secondary" onclick="fecharEsqueci()">Cancelar</button>
+      <input type="text" id="esq-cod" placeholder="000000" maxlength="6" style="letter-spacing:4px;font-size:22px;text-align:center">
+      <p id="esq-ce" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Código incorreto.</p>
+      <button class="btn-g" onclick="verCodEsq()">Verificar</button><button class="btn-o" onclick="fecharEsq()">Cancelar</button>
     </div>
-    <div id="esqueci-s3" style="display:none">
-      <label>Nova senha</label><input type="password" id="esqueci-nova" placeholder="Nova senha">
-      <label>Confirmar</label><input type="password" id="esqueci-conf" placeholder="Repita">
-      <p id="esqueci-conf-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senhas não coincidem.</p>
-      <button class="btn-primary" onclick="salvarSenhaEsqueci()">Salvar nova senha</button>
-      <button class="btn-secondary" onclick="fecharEsqueci()">Cancelar</button>
+    <div id="esq-s3" style="display:none">
+      <label>Nova senha</label><input type="password" id="esq-nv" placeholder="Nova senha">
+      <label>Confirmar</label><input type="password" id="esq-cf" placeholder="Repita">
+      <p id="esq-cfe" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senhas não coincidem.</p>
+      <button class="btn-g" onclick="salvarEsq()">Salvar nova senha</button><button class="btn-o" onclick="fecharEsq()">Cancelar</button>
     </div>
   </div>
 </div>
 
-<div id="ov-altsenha" class="overlay" style="display:none">
-  <div class="overlay-card">
-    <h2>Alterar senha</h2>
-    <p>Um código será enviado para <a href="file:///C:/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="780a10380a081b17160b0c0a0d1a190b1d561b1715561a0a">[email&nbsp;protected]</a></p>
-    <div id="alt-s1"><button class="btn-primary" id="btn-alt-cod" onclick="enviarCodigoAlt()">Enviar código</button><button class="btn-secondary" onclick="fecharAlt()">Cancelar</button></div>
+<div id="ov-alt" class="ov" style="display:none">
+  <div class="ov-card">
+    <h2>Alterar senha RH</h2>
+    <p>Um código será enviado para rh@rpconstrubase.com.br</p>
+    <div id="alt-s1"><button class="btn-g" id="alt-btn" onclick="envCodAlt()">Enviar código</button><button class="btn-o" onclick="fecharAlt()">Cancelar</button></div>
     <div id="alt-s2" style="display:none">
       <label>Código recebido</label>
       <input type="text" id="alt-cod" placeholder="000000" maxlength="6" style="letter-spacing:4px;font-size:22px;text-align:center">
-      <p id="alt-cod-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Código incorreto.</p>
-      <button class="btn-primary" onclick="verificarCodigoAlt()">Verificar</button>
-      <button class="btn-secondary" onclick="fecharAlt()">Cancelar</button>
+      <p id="alt-ce" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Código incorreto.</p>
+      <button class="btn-g" onclick="verCodAlt()">Verificar</button><button class="btn-o" onclick="fecharAlt()">Cancelar</button>
     </div>
     <div id="alt-s3" style="display:none">
-      <label>Nova senha</label><input type="password" id="alt-nova" placeholder="Nova senha">
-      <label>Confirmar</label><input type="password" id="alt-conf" placeholder="Repita">
-      <p id="alt-conf-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senhas não coincidem.</p>
-      <button class="btn-primary" onclick="salvarSenhaAlt()">Salvar nova senha</button>
-      <button class="btn-secondary" onclick="fecharAlt()">Cancelar</button>
+      <label>Nova senha</label><input type="password" id="alt-nv" placeholder="Nova senha">
+      <label>Confirmar</label><input type="password" id="alt-cf" placeholder="Repita">
+      <p id="alt-cfe" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senhas não coincidem.</p>
+      <button class="btn-g" onclick="salvarAlt()">Salvar nova senha</button><button class="btn-o" onclick="fecharAlt()">Cancelar</button>
     </div>
   </div>
 </div>
 
-<div id="ov-busca" class="overlay" style="display: none;">
-  <div class="overlay-card">
+<div id="ov-busca" class="ov" style="display:none">
+  <div class="ov-card">
     <h2>Buscar funcionário</h2>
     <p>Digite o nome para pesquisar</p>
-    <input type="text" id="busca-input" placeholder="Ex: Carlos..." oninput="filtrarBusca(this.value)" autocomplete="off">
-    <div id="busca-res" style="max-height:280px;overflow-y:auto;border:1px solid #eee;border-radius:8px;"><div style="padding:12px;font-size:13px;color:#aaa">Digite ao menos 2 letras</div></div>
-    <button class="btn-secondary" onclick="fecharBusca()" style="margin-top:1rem">Fechar</button>
+    <input type="text" id="busca-inp" placeholder="Ex: Carlos..." oninput="filtraBusca(this.value)" autocomplete="off">
+    <div id="busca-res" style="max-height:280px;overflow-y:auto;border:1px solid #eee;border-radius:8px;"></div>
+    <button class="btn-o" onclick="fecharBusca()" style="margin-top:1rem">Fechar</button>
   </div>
 </div>
 
-<div id="ov-limpar" class="overlay" style="display:none">
-  <div class="overlay-card">
+<div id="ov-limpar" class="ov" style="display:none">
+  <div class="ov-card">
     <h2>Limpar pedidos</h2>
     <p>Digite a senha do RH ou a senha master para confirmar.</p>
     <label>Senha</label>
-    <input type="password" id="limpar-senha" placeholder="••••••">
-    <p id="limpar-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senha incorreta.</p>
-    <button class="btn-primary" style="background:#e24b4a" onclick="confirmarLimpar()">Confirmar</button>
-    <button class="btn-secondary" onclick="fecharLimpar()">Cancelar</button>
+    <input type="password" id="limp-s" placeholder="••••••">
+    <p id="limp-e" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senha incorreta.</p>
+    <button class="btn-g" style="background:#e24b4a" onclick="confLimpar()">Confirmar</button>
+    <button class="btn-o" onclick="fecharLimpar()">Cancelar</button>
   </div>
 </div>
 
-<div class="container"><div id="app"><div class="logo"><h1>Pedido de Refeição</h1><p>RP Construbase — Mogi Guaçu</p></div>
-    <div class="nav-tabs"><button class="tab active">Fazer pedido</button><button class="tab" onclick="abrirAdmin()">Painel RH</button></div>
-    <div class="aviso">Pedidos de <strong>almoço</strong> (até 08:30) e <strong>janta</strong> (até 13:30) disponíveis</div><div style="background:#f0f9f5;border-radius:8px;padding:8px 12px;margin-bottom:1rem;font-size:13px;color:#0F6E56">Operando como: <strong>Acesso RH</strong><span class="nivel-badge nivel-rh">RH</span><span style="float:right;cursor:pointer;color:#aaa" onclick="operador=null;temRestricao=null;render()">✕</span></div>
-    <div class="card">
-      <label>Matrícula</label>
-      <div class="busca-wrapper"><input type="text" id="mat" placeholder="Digite a matrícula" oninput="buscarMat(this.value)" autocomplete="off" style="margin-bottom:0;padding-right:40px"><span class="busca-ico" onclick="abrirBusca()">🔍</span></div>
-      <div id="sug" class="nome-sugerido" style="display:none"></div>
-      <div id="mat-err" class="matricula-erro" style="display:none">Matrícula não encontrada.</div>
-      <label style="margin-top:6px">Nome completo</label>
-      <input type="text" id="nome-f" placeholder="Preenchido automaticamente" style="background:#f9f9f9" readonly="">
-      <label>Local de entrega</label>
-      <select id="local"><option value="">Selecione o local...</option></select>
-      <label>Refeição</label>
-      <select id="tipo"><option value="">Selecione...</option><option value="Almoço">Almoço</option><option value="Janta">Janta</option></select>
-      <label>Possui alguma restrição alimentar?</label>
-      <div class="sim-nao"><button id="btn-sim" onclick="setRestricao(true)">Sim</button><button id="btn-nao" onclick="setRestricao(false)">Não</button></div>
-      <div id="bloco-rest" style="display:none">
-        <label>Selecione as restrições</label>
-        <div style="border:1px solid #eee;border-radius:8px;padding:4px 10px;margin-bottom:10px"></div>
-        <label>Outra restrição <span style="font-weight:400;color:#aaa">(opcional)</span></label>
-        <textarea id="outra-rest" placeholder="Descreva outra restrição..."></textarea>
-      </div>
-      <button class="btn-primary" onclick="fazerPed()">Confirmar pedido</button>
-    </div></div></div>
+<div class="container"><div id="app"></div></div>
 
-<script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-emailjs.init('d2AUQ-6X7bl4yUhuU');
-const SVC='service_fil3aea',TPL='template_9x2loev';
-const EMAIL_RH='rh@rpconstrubase.com.br',EMAIL_DP='dp@rpconstrubase.com.br';
-const SHEET_ID='1FEA60779o0kKQiN52OXDqX7KYFCrbyMhnhK8PZXZDvM';
-const FERIADOS=['01/01','21/04','01/05','07/09','12/10','02/11','15/11','20/11','25/12'];
-const SENHA_MASTER='@RpMaster2024';
+<script src="./index_files/email.min.js.download"></script>
+<script>
+// Config
+var EJSKEY='d2AUQ-6X7bl4yUhuU';
+var SVC='service_fil3aea',TPL='template_9x2loev';
+var EMAIL_RH='rh@rpconstrubase.com.br',EMAIL_DP='dp@rpconstrubase.com.br';
+var SHEET_ID='1FEA60779o0kKQiN52OXDqX7KYFCrbyMhnhK8PZXZDvM';
+var FERIADOS=['01/01','21/04','01/05','07/09','12/10','02/11','15/11','20/11','25/12'];
+var SENHA_MASTER='@RpMaster2024';
+var SENHA_RH_KEY='rp_senha';
 
-var senhaAtual=localStorage.getItem('rp_senha')||'@Rh_rp';
-var cod=null,codExp=null,codEsqueci=null,codEsqueciExp=null;
-var funcs=JSON.parse(localStorage.getItem('rp_cache_funcs')||'[]');
-var rests=JSON.parse(localStorage.getItem('rp_cache_rests')||'[]');
-var locais=JSON.parse(localStorage.getItem('rp_cache_locais')||'[]');
-var restricoes=JSON.parse(localStorage.getItem('rp_cache_restricoes')||'[]');
-var centrosCusto=JSON.parse(localStorage.getItem('rp_cache_cc')||'[]');
-var pedidos=JSON.parse(localStorage.getItem('pedidos_rp_v8')||'[]');
+// Estado global
+var senhaRH=localStorage.getItem(SENHA_RH_KEY)||'@Rh_rp';
+var codEsq=null,codEsqExp=null,codAlt=null,codAltExp=null;
+var funcs=JSON.parse(localStorage.getItem('rp_cf')||'[]');
+var rests=JSON.parse(localStorage.getItem('rp_cr')||'[]');
+var locais=JSON.parse(localStorage.getItem('rp_cl')||'[]');
+var restricoes=JSON.parse(localStorage.getItem('rp_crest')||'[]');
+var ccs=JSON.parse(localStorage.getItem('rp_ccc')||'[]');
+var pedidos=JSON.parse(localStorage.getItem('rp_ped')||'[]');
 var view='pedido',aview='lista',enviando=false;
-var operador=null,restSel=null,ultimoPed=null,temRestricao=null;
+var operador=null,restSel=null,ultimoPed=null,temRest=null;
 
-const salvar=()=>localStorage.setItem('pedidos_rp_v8',JSON.stringify(pedidos));
-const hoje=()=>new Date().toLocaleDateString('pt-BR');
-const agora=()=>new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-const mins=()=>{const n=new Date();return n.getHours()*60+n.getMinutes();};
-const proto=()=>'RP'+Date.now().toString().slice(-6);
-const gerarCod=()=>String(Math.floor(100000+Math.random()*900000));
-const isFds=()=>{const n=new Date(),d=n.getDay(),dm=n.toLocaleDateString('pt-BR').slice(0,5);return d===0||d===6||FERIADOS.includes(dm);};
-const isSenhaMaster=(s)=>s===SENHA_MASTER;
-const isSenhaRH=(s)=>s===senhaAtual;
-const getDisp=()=>{
+// Helpers
+function salvar(){localStorage.setItem('rp_ped',JSON.stringify(pedidos));}
+function hoje(){return new Date().toLocaleDateString('pt-BR');}
+function agora(){return new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});}
+function mins(){var n=new Date();return n.getHours()*60+n.getMinutes();}
+function proto(){return 'RP'+Date.now().toString().slice(-6);}
+function gerarCod(){return String(Math.floor(100000+Math.random()*900000));}
+function isFds(){var n=new Date(),d=n.getDay(),dm=n.toLocaleDateString('pt-BR').slice(0,5);return d===0||d===6||FERIADOS.indexOf(dm)>=0;}
+function isMaster(s){return s===SENHA_MASTER;}
+function isRHSenha(s){return s===senhaRH;}
+function getDisp(){
   if(operador&&(operador.tipo==='encarregado'||operador.tipo==='rh'))return['Almoço','Janta'];
-  const m=mins(),op=[];
+  var m=mins(),op=[];
   if(m<9*60)op.push('Almoço');
   if(m>=8*60+30&&m<14*60)op.push('Janta');
   return op;
-};
-const doDia=(tipo,todos=false)=>{
-  const base=pedidos.filter(p=>p.data===hoje()&&(!tipo||p.tipo===tipo));
+}
+function doDia(tipo,todos){
+  var base=pedidos.filter(function(p){return p.data===hoje()&&(!tipo||p.tipo===tipo);});
   if(todos||!operador||operador.tipo==='rh')return base;
-  return base.filter(p=>p.operador===operador.m);
-};
-const deOntem=()=>{const d=new Date();d.setDate(d.getDate()-1);const ot=d.toLocaleDateString('pt-BR');return pedidos.filter(p=>p.data===ot&&p.operador===operador?.m);};
-const porLocal=(l)=>{const g={};l.forEach(p=>{if(!g[p.local])g[p.local]=[];g[p.local].push(p);});return g;};
-const restsDia=()=>{const f=isFds();return rests.filter(r=>r.dias==='ambos'||(r.dias==='fds'&&f)||(r.dias==='semana'&&!f));};
-
-const corpo=(tipo,cc,paraWA=false)=>{
-  const l=doDia(tipo),g=porLocal(l);
-  const hrEntrega=tipo==='Almoço'?'11:00':'18:00';
-  const b=(txt)=>paraWA?`*${txt}*`:txt;
-  let t=`${b('Pedido de Refeição - RP Construbase Mogi Guaçu')}\nData: ${hoje()} | ${tipo} — Entrega às ${hrEntrega}`;
-  if(cc)t+=`\nCentro de Custo: ${cc}`;
-  t+='\n';let n=0;
-  Object.entries(g).forEach(([loc,its])=>{
-    t+=`\n${b(loc+' - Total: '+its.length)}\n`;
-    its.forEach(p=>{const r=p.restricoes&&p.restricoes.length>0?` [Restrição: ${p.restricoes.join(', ')}]`:'';t+=`  - ${p.nome}${r}\n`;});
+  return base.filter(function(p){return p.operador===operador.m;});
+}
+function deOntem(){
+  var d=new Date();d.setDate(d.getDate()-1);
+  var ot=d.toLocaleDateString('pt-BR');
+  return pedidos.filter(function(p){return p.data===ot&&p.operador===operador.m;});
+}
+function porLocal(l){
+  var g={};l.forEach(function(p){if(!g[p.local])g[p.local]=[];g[p.local].push(p);});return g;
+}
+function restsDia(){
+  var f=isFds();
+  return rests.filter(function(r){return r.dias==='ambos'||(r.dias==='fds'&&f)||(r.dias==='semana'&&!f);});
+}
+function corpo(tipo,cc,wa){
+  var l=doDia(tipo,true),g=porLocal(l);
+  var hr=tipo==='Almoço'?'11:00':'18:00';
+  function b(t){return wa?'*'+t+'*':t;}
+  var t=b('Pedido de Refeição - RP Construbase Mogi Guaçu')+'\nData: '+hoje()+' | '+tipo+' — Entrega às '+hr;
+  if(cc)t+='\nCentro de Custo: '+cc;
+  t+='\n';var n=0;
+  Object.keys(g).forEach(function(loc){
+    var its=g[loc];
+    t+='\n'+b(loc+' - Total: '+its.length)+'\n';
+    its.forEach(function(p){var r=p.restricoes&&p.restricoes.length>0?' [Restrição: '+p.restricoes.join(', ')+']':'';t+='  - '+p.nome+r+'\n';});
     n+=its.length;
   });
-  return t+`\n${b('Total geral: '+n+' refeições')}\n\n${b('FAVOR ENVIAR GARFOS JUNTO COM AS MARMITAS.')}`;
-};
+  return t+'\n'+b('Total geral: '+n+' refeições')+'\n\n'+b('FAVOR ENVIAR GARFOS JUNTO COM AS MARMITAS.');
+}
 
-async function carregarAba(nome){
-  const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(nome)}`;
-  try{
-    const resp=await Promise.race([
-      fetch(url,{mode:'cors',cache:'no-cache'}),
-      new Promise((_,rej)=>setTimeout(()=>rej('timeout'),10000))
-    ]);
-    const txt=await resp.text();
-    const rows=[];
-    for(const line of txt.trim().split('\n').slice(1)){
-      const cols=[];let c='',q=false;
-      for(let i=0;i<line.length;i++){const ch=line[i];if(ch==='"'){if(q&&line[i+1]==='"'){c+='"';i++;}else q=!q;}else if(ch===','&&!q){cols.push(c.trim());c='';}else c+=ch;}
-      cols.push(c.trim());if(cols.some(x=>x))rows.push(cols);
+// Carregar planilha
+function parseCSV(txt){
+  var rows=[];
+  var lines=txt.trim().split('\n').slice(1);
+  for(var i=0;i<lines.length;i++){
+    var line=lines[i],cols=[],c='',q=false;
+    for(var j=0;j<line.length;j++){
+      var ch=line[j];
+      if(ch==='"'){if(q&&line[j+1]==='"'){c+='"';j++;}else q=!q;}
+      else if(ch===','&&!q){cols.push(c.trim());c='';}
+      else c+=ch;
     }
-    return rows;
-  }catch(e){console.error('Erro aba '+nome+':',e);return[];}
+    cols.push(c.trim());
+    if(cols.some(function(x){return x;}))rows.push(cols);
+  }
+  return rows;
 }
-
-function limparCabecalho(rows){
-  return rows.filter(r=>r[0]&&!/^(matricula|nome|local|restaurante|restricao|id|centro de custo|centrocusto|tipo acesso|tipo|email|dias|whatsapp|centro|custo)$/i.test(r[0].trim()));
+function limpaHdr(rows){
+  return rows.filter(function(r){
+    return r[0]&&!/^(matricula|nome|local|restaurante|restricao|id|centro de custo|centrocusto|tipo acesso|tipo|email|dias|whatsapp|senha)$/i.test(r[0].trim());
+  });
 }
-
-async function load(){
-  try{
-    const [r1,r2,r3,r4,r5]=await Promise.all([
-      carregarAba('Cadastro Funcionários'),
-      carregarAba('Restaurantes'),
-      carregarAba('Locais de Entrega'),
-      carregarAba('Restricoes'),
-      carregarAba('Centro de Custo')
-    ]);
-    if(r1.length){funcs=limparCabecalho(r1).filter(r=>r[0]&&r[1]).map(r=>({m:String(r[0]).replace(/\.0$/,''),n:r[1].toUpperCase(),tipo:(r[2]||'funcionario').toLowerCase().trim(),senha:(r[3]||'').trim()}));localStorage.setItem('rp_cache_funcs',JSON.stringify(funcs));}
-    if(r2.length){rests=limparCabecalho(r2).filter(r=>r[0]&&r[1]).map(r=>({nome:r[0],email:r[1],dias:(r[2]||'ambos').toLowerCase().trim(),whatsapp:(r[3]||'').replace(/\D/g,'')}));localStorage.setItem('rp_cache_rests',JSON.stringify(rests));}
-    if(r3.length){locais=limparCabecalho(r3).filter(r=>r[0]).map(r=>r[0]);localStorage.setItem('rp_cache_locais',JSON.stringify(locais));}
-    if(r4.length){restricoes=limparCabecalho(r4).filter(r=>r[0]).map(r=>r[0]);localStorage.setItem('rp_cache_restricoes',JSON.stringify(restricoes));}
-    if(r5.length){centrosCusto=limparCabecalho(r5).filter(r=>r[0]&&r[1]).map(r=>({id:r[0],nome:r[1],local:(r[2]||'')+(r[3]?'/'+r[3]:'')}));localStorage.setItem('rp_cache_cc',JSON.stringify(centrosCusto));}
+function carregarAba(nome){
+  return new Promise(function(res){
+    var url='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx=out:csv&sheet='+encodeURIComponent(nome);
+    var t=setTimeout(function(){res([]);},8000);
+    fetch(url,{cache:'no-cache'})
+      .then(function(r){return r.text();})
+      .then(function(txt){clearTimeout(t);res(parseCSV(txt));})
+      .catch(function(){clearTimeout(t);res([]);});
+  });
+}
+function load(){
+  Promise.all([
+    carregarAba('Cadastro Funcionários'),
+    carregarAba('Restaurantes'),
+    carregarAba('Locais de Entrega'),
+    carregarAba('Restricoes'),
+    carregarAba('Centro de Custo')
+  ]).then(function(rs){
+    var r1=rs[0],r2=rs[1],r3=rs[2],r4=rs[3],r5=rs[4];
+    if(r1.length){funcs=limpaHdr(r1).filter(function(r){return r[0]&&r[1];}).map(function(r){return{m:String(r[0]).replace(/\.0$/,''),n:r[1].toUpperCase(),tipo:(r[2]||'funcionario').toLowerCase().trim(),senha:(r[3]||'').trim()};});localStorage.setItem('rp_cf',JSON.stringify(funcs));}
+    if(r2.length){rests=limpaHdr(r2).filter(function(r){return r[0]&&r[1];}).map(function(r){return{nome:r[0],email:r[1],dias:(r[2]||'ambos').toLowerCase().trim(),whatsapp:(r[3]||'').replace(/\D/g,'')};});localStorage.setItem('rp_cr',JSON.stringify(rests));}
+    if(r3.length){locais=limpaHdr(r3).filter(function(r){return r[0];}).map(function(r){return r[0];});localStorage.setItem('rp_cl',JSON.stringify(locais));}
+    if(r4.length){restricoes=limpaHdr(r4).filter(function(r){return r[0];}).map(function(r){return r[0];});localStorage.setItem('rp_crest',JSON.stringify(restricoes));}
+    if(r5.length){ccs=limpaHdr(r5).filter(function(r){return r[0]&&r[1];}).map(function(r){return{id:r[0],nome:r[1],local:(r[2]||'')+(r[3]?'/'+r[3]:'')};});localStorage.setItem('rp_ccc',JSON.stringify(ccs));}
     render();
-  }catch(e){console.error('Erro ao carregar planilha:',e);}
+  }).catch(function(e){console.error('Erro:',e);});
 }
 
-function loginSenha(){
-  const mat=document.getElementById('login-mat').value.trim().toUpperCase();
-  const sen=document.getElementById('login-senha').value;
-  const f=funcs.find(x=>x.m.toUpperCase()===mat&&(x.tipo==='encarregado'||x.tipo==='rh'));
-  if(!f){document.getElementById('login-senha-erro').style.display='block';return;}
-  // Verificar senha local primeiro, depois planilha
-  const senhaLocal=localStorage.getItem('rp_senha_'+mat)||f.senha||'';
-  if(sen===senhaLocal||sen===f.senha){
-    operador=f;document.getElementById('ov-login').style.display='none';
-    // Verificar se é primeira vez (senha igual à da planilha)
-    const senhaLocalSalva=localStorage.getItem('rp_senha_'+mat);
-    if(!senhaLocalSalva&&f.senha&&sen===f.senha){
-      operador=f;abrirTrocarSenha(mat,f.n);
+// Login
+function loginEnc(){
+  var mat=document.getElementById('lm').value.trim().toUpperCase();
+  var sen=document.getElementById('ls').value;
+  var f=funcs.filter(function(x){return x.m.toUpperCase()===mat&&(x.tipo==='encarregado'||x.tipo==='rh');})[0];
+  if(!f){document.getElementById('le').style.display='block';return;}
+  var senLocal=localStorage.getItem('rp_sp_'+mat)||'';
+  var senPlanilha=f.senha||'';
+  if(sen===senLocal||(senLocal===''&&sen===senPlanilha)){
+    operador=f;
+    document.getElementById('ov-login').style.display='none';
+    if(senLocal===''&&sen===senPlanilha&&senPlanilha!==''){
+      abrirTrocar(mat,f.n);
     }else{
       view='admin';aview='lista';render();
     }
-  }else document.getElementById('login-senha-erro').style.display='block';
+  }else document.getElementById('le').style.display='block';
 }
-function loginSenhaRH(){
-  const v=document.getElementById('login-senha-rh').value;
-  if(isSenhaRH(v)||isSenhaMaster(v)){operador={m:'senha',n:'Acesso RH',tipo:'rh'};document.getElementById('ov-login').style.display='none';view='admin';aview='lista';render();}
-  else document.getElementById('login-senha-rh-erro').style.display='block';
+function loginRH(){
+  var v=document.getElementById('lsr').value;
+  if(isRHSenha(v)||isMaster(v)){
+    operador={m:'rh',n:'Acesso RH',tipo:'rh'};
+    document.getElementById('ov-login').style.display='none';
+    view='admin';aview='lista';render();
+  }else document.getElementById('ler').style.display='block';
 }
 function fecharLogin(){document.getElementById('ov-login').style.display='none';view='pedido';render();}
 function abrirAdmin(){
   if(operador){view='admin';aview='lista';render();return;}
   document.getElementById('ov-login').style.display='flex';
-  document.getElementById('login-mat').value='';document.getElementById('login-senha').value='';
-  document.getElementById('login-mat-erro').style.display='none';document.getElementById('login-senha-erro').style.display='none';
-  setTimeout(()=>document.getElementById('login-mat').focus(),100);
+  document.getElementById('lm').value='';document.getElementById('ls').value='';document.getElementById('lsr').value='';
+  document.getElementById('le').style.display='none';document.getElementById('ler').style.display='none';
+  setTimeout(function(){document.getElementById('lm').focus();},100);
 }
 
-function abrirTrocarSenha(mat,nome){
-  document.getElementById('ov-login').style.display='none';
+// Trocar senha (primeiro acesso)
+function abrirTrocar(mat,nome){
   document.getElementById('ov-trocar').style.display='flex';
-  document.getElementById('trocar-nome').textContent=nome;
-  document.getElementById('trocar-mat').value=mat;
-  document.getElementById('trocar-nova').value='';
-  document.getElementById('trocar-conf').value='';
-  document.getElementById('trocar-erro').style.display='none';
+  document.getElementById('tn').textContent=nome;
+  document.getElementById('tm').value=mat;
+  document.getElementById('tnv').value='';document.getElementById('tcf').value='';
+  document.getElementById('tce').style.display='none';
 }
-
-function salvarTrocarSenha(){
-  const mat=document.getElementById('trocar-mat').value;
-  const nova=document.getElementById('trocar-nova').value;
-  const conf=document.getElementById('trocar-conf').value;
-  if(!nova||nova.length<4){alert('Mínimo 4 caracteres.');return;}
-  if(nova!==conf){document.getElementById('trocar-erro').style.display='block';return;}
-  localStorage.setItem('rp_senha_'+mat,nova);
+function salvarTrocar(){
+  var mat=document.getElementById('tm').value;
+  var nv=document.getElementById('tnv').value;
+  var cf=document.getElementById('tcf').value;
+  if(!nv||nv.length<4){alert('Mínimo 4 caracteres.');return;}
+  if(nv!==cf){document.getElementById('tce').style.display='block';return;}
+  localStorage.setItem('rp_sp_'+mat,nv);
   document.getElementById('ov-trocar').style.display='none';
   view='admin';aview='lista';render();
 }
 
-function abrirEsqueci(){
+// Esqueci senha
+function abrirEsq(){
   document.getElementById('ov-login').style.display='none';
-  document.getElementById('ov-esqueci').style.display='flex';
-  document.getElementById('esqueci-s1').style.display='block';
-  document.getElementById('esqueci-s2').style.display='none';
-  document.getElementById('esqueci-s3').style.display='none';
-  document.getElementById('btn-esqueci-cod').disabled=false;
-  document.getElementById('btn-esqueci-cod').textContent='Enviar código';
+  document.getElementById('ov-esq').style.display='flex';
+  document.getElementById('esq-s1').style.display='block';
+  document.getElementById('esq-s2').style.display='none';
+  document.getElementById('esq-s3').style.display='none';
+  document.getElementById('esq-btn').disabled=false;
+  document.getElementById('esq-btn').textContent='Enviar código';
 }
-function fecharEsqueci(){document.getElementById('ov-esqueci').style.display='none';}
-async function enviarCodigoEsqueci(){
-  const btn=document.getElementById('btn-esqueci-cod');btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Enviando...';
-  codEsqueci=gerarCod();codEsqueciExp=Date.now()+600000;
-  try{await emailjs.send(SVC,TPL,{to_email:EMAIL_RH,cc_email:'',subject:'Recuperação de senha — RP Construbase',message:`Código para recuperação de senha:\n\n${codEsqueci}\n\nExpira em 10 minutos.`});
-    document.getElementById('esqueci-s1').style.display='none';document.getElementById('esqueci-s2').style.display='block';
-    document.getElementById('esqueci-cod').value='';document.getElementById('esqueci-cod-erro').style.display='none';
-  }catch(e){alert('Erro ao enviar.\n\n'+(e.text||e));btn.disabled=false;btn.textContent='Enviar código';}
+function fecharEsq(){document.getElementById('ov-esq').style.display='none';}
+function envCodEsq(){
+  var btn=document.getElementById('esq-btn');
+  btn.disabled=true;btn.innerHTML='<span class="spin"></span>Enviando...';
+  codEsq=gerarCod();codEsqExp=Date.now()+600000;
+  emailjs.send(SVC,TPL,{to_email:EMAIL_RH,cc_email:'',subject:'Recuperação de senha — RP Construbase',message:'Código para recuperação:\n\n'+codEsq+'\n\nExpira em 10 minutos.'})
+    .then(function(){
+      document.getElementById('esq-s1').style.display='none';
+      document.getElementById('esq-s2').style.display='block';
+      document.getElementById('esq-cod').value='';
+      document.getElementById('esq-ce').style.display='none';
+    }).catch(function(e){alert('Erro: '+(e.text||e));btn.disabled=false;btn.textContent='Enviar código';});
 }
-function verificarCodigoEsqueci(){
-  if(document.getElementById('esqueci-cod').value.trim()===codEsqueci&&Date.now()<codEsqueciExp){document.getElementById('esqueci-s2').style.display='none';document.getElementById('esqueci-s3').style.display='block';}
-  else document.getElementById('esqueci-cod-erro').style.display='block';
+function verCodEsq(){
+  if(document.getElementById('esq-cod').value.trim()===codEsq&&Date.now()<codEsqExp){
+    document.getElementById('esq-s2').style.display='none';
+    document.getElementById('esq-s3').style.display='block';
+  }else document.getElementById('esq-ce').style.display='block';
 }
-function salvarSenhaEsqueci(){
-  const nv=document.getElementById('esqueci-nova').value,cf=document.getElementById('esqueci-conf').value;
+function salvarEsq(){
+  var nv=document.getElementById('esq-nv').value,cf=document.getElementById('esq-cf').value;
   if(!nv||nv.length<4){alert('Mínimo 4 caracteres.');return;}
-  if(nv!==cf){document.getElementById('esqueci-conf-erro').style.display='block';return;}
-  senhaAtual=nv;localStorage.setItem('rp_senha',nv);fecharEsqueci();alert('Senha redefinida!');
+  if(nv!==cf){document.getElementById('esq-cfe').style.display='block';return;}
+  senhaRH=nv;localStorage.setItem(SENHA_RH_KEY,nv);
+  fecharEsq();alert('Senha redefinida!');
 }
 
+// Alterar senha RH
 function abrirAlt(){
-  document.getElementById('ov-altsenha').style.display='flex';
-  document.getElementById('alt-s1').style.display='block';document.getElementById('alt-s2').style.display='none';document.getElementById('alt-s3').style.display='none';
-  document.getElementById('btn-alt-cod').disabled=false;document.getElementById('btn-alt-cod').textContent='Enviar código';
+  document.getElementById('ov-alt').style.display='flex';
+  document.getElementById('alt-s1').style.display='block';
+  document.getElementById('alt-s2').style.display='none';
+  document.getElementById('alt-s3').style.display='none';
+  document.getElementById('alt-btn').disabled=false;
+  document.getElementById('alt-btn').textContent='Enviar código';
 }
-function fecharAlt(){document.getElementById('ov-altsenha').style.display='none';}
-async function enviarCodigoAlt(){
-  const btn=document.getElementById('btn-alt-cod');btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Enviando...';
-  cod=gerarCod();codExp=Date.now()+600000;
-  try{await emailjs.send(SVC,TPL,{to_email:EMAIL_RH,cc_email:'',subject:'Código de verificação — RP Construbase',message:`Código para alteração de senha:\n\n${cod}\n\nExpira em 10 minutos.`});
-    document.getElementById('alt-s1').style.display='none';document.getElementById('alt-s2').style.display='block';
-    document.getElementById('alt-cod').value='';document.getElementById('alt-cod-erro').style.display='none';
-  }catch(e){alert('Erro ao enviar.\n\n'+(e.text||e));btn.disabled=false;btn.textContent='Enviar código';}
+function fecharAlt(){document.getElementById('ov-alt').style.display='none';}
+function envCodAlt(){
+  var btn=document.getElementById('alt-btn');
+  btn.disabled=true;btn.innerHTML='<span class="spin"></span>Enviando...';
+  codAlt=gerarCod();codAltExp=Date.now()+600000;
+  emailjs.send(SVC,TPL,{to_email:EMAIL_RH,cc_email:'',subject:'Alteração de senha — RP Construbase',message:'Código para alteração:\n\n'+codAlt+'\n\nExpira em 10 minutos.'})
+    .then(function(){
+      document.getElementById('alt-s1').style.display='none';
+      document.getElementById('alt-s2').style.display='block';
+      document.getElementById('alt-cod').value='';
+      document.getElementById('alt-ce').style.display='none';
+    }).catch(function(e){alert('Erro: '+(e.text||e));btn.disabled=false;btn.textContent='Enviar código';});
 }
-function verificarCodigoAlt(){
-  if(document.getElementById('alt-cod').value.trim()===cod&&Date.now()<codExp){document.getElementById('alt-s2').style.display='none';document.getElementById('alt-s3').style.display='block';}
-  else document.getElementById('alt-cod-erro').style.display='block';
+function verCodAlt(){
+  if(document.getElementById('alt-cod').value.trim()===codAlt&&Date.now()<codAltExp){
+    document.getElementById('alt-s2').style.display='none';
+    document.getElementById('alt-s3').style.display='block';
+  }else document.getElementById('alt-ce').style.display='block';
 }
-function salvarSenhaAlt(){
-  const nv=document.getElementById('alt-nova').value,cf=document.getElementById('alt-conf').value;
+function salvarAlt(){
+  var nv=document.getElementById('alt-nv').value,cf=document.getElementById('alt-cf').value;
   if(!nv||nv.length<4){alert('Mínimo 4 caracteres.');return;}
-  if(nv!==cf){document.getElementById('alt-conf-erro').style.display='block';return;}
-  senhaAtual=nv;localStorage.setItem('rp_senha',nv);cod=null;codExp=null;fecharAlt();alert('Senha alterada!');
+  if(nv!==cf){document.getElementById('alt-cfe').style.display='block';return;}
+  senhaRH=nv;localStorage.setItem(SENHA_RH_KEY,nv);codAlt=null;codAltExp=null;
+  fecharAlt();alert('Senha alterada!');
 }
 
-function filtrarCC(v){
-  const lista=document.getElementById('cc-lista');
-  if(!lista)return;
-  if(v.trim().length<1){lista.style.display='none';return;}
-  const q=v.trim().toUpperCase();
-  const res=centrosCusto.filter(c=>c.id.toUpperCase().includes(q)||c.nome.toUpperCase().includes(q)||c.local.toUpperCase().includes(q)).slice(0,15);
-  if(!res.length){lista.style.display='none';return;}
-  lista.style.display='block';
-  lista.innerHTML=res.map(c=>`<div class="busca-item" onclick="selecionarCC('${c.id}','${c.nome.replace(/'/g,"\'")}','${c.local.replace(/'/g,"\'")}')"><div>${c.id} — ${c.nome}</div><div class="mat">${c.local}</div></div>`).join('');
-}
-
-function abrirBuscaCC(){
-  const inp=document.getElementById('cc-input');
-  if(inp)inp.focus();
-}
-
-function selecionarCC(id,nome,local){
-  const inp=document.getElementById('cc-input');
-  const hid=document.getElementById('cc-sel');
-  const lista=document.getElementById('cc-lista');
-  const val=`${id} — ${nome} (${local})`;
-  if(inp)inp.value=val;
-  if(hid)hid.value=val;
-  if(lista)lista.style.display='none';
-}
-
+// Busca funcionário
 function abrirBusca(){
   document.getElementById('ov-busca').style.display='flex';
-  document.getElementById('busca-input').value='';
+  document.getElementById('busca-inp').value='';
   document.getElementById('busca-res').innerHTML='';
-  setTimeout(()=>document.getElementById('busca-input').focus(),100);
+  setTimeout(function(){document.getElementById('busca-inp').focus();},100);
 }
 function fecharBusca(){document.getElementById('ov-busca').style.display='none';}
-function filtrarBusca(v){
-  const res=document.getElementById('busca-res');
+function filtraBusca(v){
+  var res=document.getElementById('busca-res');
   if(v.trim().length<2){res.innerHTML='<div style="padding:12px;font-size:13px;color:#aaa">Digite ao menos 2 letras</div>';return;}
-  const lista=funcs.filter(f=>f.n.includes(v.trim().toUpperCase())).slice(0,20);
+  var q=v.trim().toUpperCase();
+  var lista=funcs.filter(function(f){return f.n.indexOf(q)>=0;}).slice(0,20);
   if(!lista.length){res.innerHTML='<div style="padding:12px;font-size:13px;color:#aaa">Nenhum resultado</div>';return;}
-  res.innerHTML=lista.map(f=>`<div class="busca-item" onclick="selecionarDaBusca('${f.m}','${f.n.replace(/'/g,"\\'")}')"><div>${f.n}</div><div class="mat">${f.m}</div></div>`).join('');
+  res.innerHTML=lista.map(function(f){return '<div class="bi" onclick="selBusca(''+f.m+'',''+f.n.replace(/'/g,"\'")+'')" ><div>'+f.n+'</div><div class="bm">'+f.m+'</div></div>';}).join('');
 }
-function selecionarDaBusca(mat,nome){
+function selBusca(mat,nome){
   fecharBusca();
-  const me=document.getElementById('mat'),nf=document.getElementById('nome-f');
+  var me=document.getElementById('mat'),nf=document.getElementById('nome-f');
   if(me)me.value=mat;
   if(nf){nf.value=nome;nf.readOnly=true;}
-  const sug=document.getElementById('sug'),err=document.getElementById('mat-err');
+  var sug=document.getElementById('sug'),err=document.getElementById('mat-err');
   if(sug)sug.style.display='none';if(err)err.style.display='none';
 }
-
-function buscarMat(val){
-  const v=val.trim().toUpperCase(),f=funcs.find(x=>x.m.toUpperCase()===v);
-  const sug=document.getElementById('sug'),err=document.getElementById('mat-err'),nf=document.getElementById('nome-f');
+function buscaMat(val){
+  var v=val.trim().toUpperCase();
+  var f=funcs.filter(function(x){return x.m.toUpperCase()===v;})[0];
+  var sug=document.getElementById('sug'),err=document.getElementById('mat-err'),nf=document.getElementById('nome-f');
   if(!sug||!err||!nf)return;
-  if(f){sug.style.display='block';sug.textContent='✓ '+f.n+' — toque para confirmar';sug.onclick=()=>{nf.value=f.n;nf.readOnly=true;sug.style.display='none';err.style.display='none';};err.style.display='none';}
-  else if(v.length>0){sug.style.display='none';err.style.display='block';nf.value='';nf.readOnly=false;}
+  if(f){
+    sug.style.display='block';sug.textContent='✓ '+f.n+' — toque para confirmar';
+    sug.onclick=function(){nf.value=f.n;nf.readOnly=true;sug.style.display='none';err.style.display='none';};
+    err.style.display='none';
+  }else if(v.length>0){sug.style.display='none';err.style.display='block';nf.value='';nf.readOnly=false;}
   else{sug.style.display='none';err.style.display='none';nf.value='';nf.readOnly=false;}
 }
 
-function setRestricao(val){
-  temRestricao=val;
-  const bs=document.getElementById('btn-sim'),bn=document.getElementById('btn-nao'),bl=document.getElementById('bloco-rest');
-  if(bs)bs.className=val?'ativo-sim':'';if(bn)bn.className=val?'':'ativo-nao';if(bl)bl.style.display=val?'block':'none';
+// Busca centro de custo
+function filtraCC(v){
+  var lista=document.getElementById('cc-lista');
+  if(!lista)return;
+  if(v.trim().length<1){lista.style.display='none';return;}
+  var q=v.trim().toUpperCase();
+  var res=ccs.filter(function(c){return c.id.toUpperCase().indexOf(q)>=0||c.nome.toUpperCase().indexOf(q)>=0||c.local.toUpperCase().indexOf(q)>=0;}).slice(0,15);
+  if(!res.length){lista.style.display='none';return;}
+  lista.style.display='block';
+  lista.innerHTML=res.map(function(c){return '<div class="bi" onclick="selCC(''+c.id+'',''+c.nome.replace(/'/g,"\'")+'',''+c.local.replace(/'/g,"\'")+'')"><div>'+c.id+' — '+c.nome+'</div><div class="bm">'+c.local+'</div></div>';}).join('');
 }
-function getRestricoesSelecionadas(){
-  if(!temRestricao)return[];
-  const s=Array.from(document.querySelectorAll('.rest-check:checked')).map(c=>c.value);
-  const o=document.getElementById('outra-rest');if(o&&o.value.trim())s.push(o.value.trim());return s;
+function selCC(id,nome,local){
+  var inp=document.getElementById('cc-inp'),hid=document.getElementById('cc-hid'),lista=document.getElementById('cc-lista');
+  var val=id+' — '+nome+' ('+local+')';
+  if(inp)inp.value=val;if(hid)hid.value=val;if(lista)lista.style.display='none';
 }
 
-function abrirLimpar(){document.getElementById('ov-limpar').style.display='flex';document.getElementById('limpar-senha').value='';document.getElementById('limpar-erro').style.display='none';}
+// Limpar pedidos
+function abrirLimpar(){document.getElementById('ov-limpar').style.display='flex';document.getElementById('limp-s').value='';document.getElementById('limp-e').style.display='none';}
 function fecharLimpar(){document.getElementById('ov-limpar').style.display='none';}
-function confirmarLimpar(){
-  const v=document.getElementById('limpar-senha').value;
-  if(isSenhaRH(v)||isSenhaMaster(v)){pedidos=pedidos.filter(p=>p.data!==hoje());salvar();fecharLimpar();render();}
-  else document.getElementById('limpar-erro').style.display='block';
+function confLimpar(){
+  var v=document.getElementById('limp-s').value;
+  if(isRHSenha(v)||isMaster(v)){
+    pedidos=pedidos.filter(function(p){return p.data!==hoje();});
+    salvar();fecharLimpar();render();
+  }else document.getElementById('limp-e').style.display='block';
 }
 
-const render=()=>{document.getElementById('app').innerHTML=build();};
+// Alterar senha pessoal do encarregado
+function abrirTrocarPessoal(){
+  if(!operador||operador.m==='rh')return;
+  abrirTrocar(operador.m,operador.n);
+}
+
+// Render
+function render(){document.getElementById('app').innerHTML=build();}
 
 function build(){
   if(view==='pedido')return buildPed();
@@ -511,222 +523,243 @@ function build(){
 }
 
 function buildPed(){
-  const dp=getDisp(),enc=dp.length===0;
-  const opL=locais.map(l=>`<option value="${l}">${l}</option>`).join('');
-  const opT=dp.map(r=>`<option value="${r}">${r}</option>`).join('');
-  const chks=restricoes.map(r=>`<div class="restricao-item"><input type="checkbox" class="rest-check" value="${r}"><span>${r}</span></div>`).join('');
-  const ontem=operador?deOntem():[];
-  const repBox=ontem.length>0?`<div class="repetir-box"><h3>Repetir pedidos de ontem</h3><p>${ontem.length} pedido(s) registrado(s) ontem</p><button class="btn-primary" style="background:#854F0B" onclick="repetirOntem()">Repetir ${ontem.length} pedido(s)</button></div>`:'';
-  const opInfo=operador?`<div style="background:#f0f9f5;border-radius:8px;padding:8px 12px;margin-bottom:1rem;font-size:13px;color:#0F6E56">Operando como: <strong>${operador.n}</strong><span class="nivel-badge ${operador.tipo==='rh'?'nivel-rh':'nivel-enc'}">${operador.tipo.toUpperCase()}</span><span style="float:right;cursor:pointer;color:#aaa" onclick="operador=null;temRestricao=null;render()">✕</span></div>`:'';
-  let av='';
-  if(enc)av=`<div class="aviso encerrado">Pedidos encerrados. Almoço até 08:30 | Janta até 13:30</div>`;
-  else if(dp.includes('Almoço')&&dp.includes('Janta'))av=`<div class="aviso">Pedidos de <strong>almoço</strong> (até 08:30) e <strong>janta</strong> (até 13:30) disponíveis</div>`;
-  else if(dp.includes('Almoço'))av=`<div class="aviso">Pedidos de <strong>almoço</strong> aceitos até as <strong>08:30</strong></div>`;
-  else av=`<div class="aviso">Pedidos de <strong>janta</strong> aceitos até as <strong>13:30</strong></div>`;
-  return `<div class="logo"><h1>Pedido de Refeição</h1><p>RP Construbase — Mogi Guaçu</p></div>
-    <div class="nav-tabs"><button class="tab active">Fazer pedido</button><button class="tab" onclick="abrirAdmin()">Painel RH</button></div>
-    ${av}${opInfo}${repBox}
-    <div class="card">
-      <label>Matrícula</label>
-      <div class="busca-wrapper"><input type="text" id="mat" placeholder="Digite a matrícula" oninput="buscarMat(this.value)" autocomplete="off" style="margin-bottom:0;padding-right:40px"/><span class="busca-ico" onclick="abrirBusca()">🔍</span></div>
-      <div id="sug" class="nome-sugerido" style="display:none"></div>
-      <div id="mat-err" class="matricula-erro" style="display:none">Matrícula não encontrada.</div>
-      <label style="margin-top:6px">Nome completo</label>
-      <input type="text" id="nome-f" placeholder="Preenchido automaticamente" style="background:#f9f9f9" readonly/>
-      <label>Local de entrega</label>
-      <select id="local"><option value="">Selecione o local...</option>${opL}</select>
-      <label>Refeição</label>
-      <select id="tipo"><option value="">Selecione...</option>${enc&&!operador?'<option disabled>Pedidos encerrados</option>':opT}</select>
-      <label>Possui alguma restrição alimentar?</label>
-      <div class="sim-nao"><button id="btn-sim" onclick="setRestricao(true)">Sim</button><button id="btn-nao" onclick="setRestricao(false)">Não</button></div>
-      <div id="bloco-rest" style="display:none">
-        <label>Selecione as restrições</label>
-        <div style="border:1px solid #eee;border-radius:8px;padding:4px 10px;margin-bottom:10px">${chks}</div>
-        <label>Outra restrição <span style="font-weight:400;color:#aaa">(opcional)</span></label>
-        <textarea id="outra-rest" placeholder="Descreva outra restrição..."></textarea>
-      </div>
-      <button class="btn-primary" ${enc&&!operador?'disabled':''} onclick="fazerPed()">${enc&&!operador?'Fora do horário':'Confirmar pedido'}</button>
-    </div>`;
+  var dp=getDisp(),enc=dp.length===0;
+  var opL=locais.map(function(l){return '<option value="'+l+'">'+l+'</option>';}).join('');
+  var opT=dp.map(function(r){return '<option value="'+r+'">'+r+'</option>';}).join('');
+  var chks=restricoes.map(function(r){return '<div class="rest-item"><input type="checkbox" class="rck" value="'+r+'"><span>'+r+'</span></div>';}).join('');
+  var ontem=operador?deOntem():[];
+  var repBox=ontem.length>0?'<div class="rep-box"><h3>Repetir pedidos de ontem</h3><p>'+ontem.length+' pedido(s) registrado(s) ontem</p><button class="btn-g" style="background:#854F0B" onclick="repetirOntem()">Repetir '+ontem.length+' pedido(s)</button></div>':'';
+  var opInfo=operador?'<div style="background:#f0f9f5;border-radius:8px;padding:8px 12px;margin-bottom:1rem;font-size:13px;color:#0F6E56">Operando como: <strong>'+operador.n+'</strong><span class="nb '+(operador.tipo==='rh'?'nb-rh':'nb-enc')+'">'+operador.tipo.toUpperCase()+'</span><span style="float:right;cursor:pointer;color:#aaa" onclick="operador=null;temRest=null;render()">✕</span></div>':'';
+  var av='';
+  if(enc)av='<div class="aviso enc">Pedidos encerrados. Almoço até 08:30 | Janta até 13:30</div>';
+  else if(dp.indexOf('Almoço')>=0&&dp.indexOf('Janta')>=0)av='<div class="aviso">Pedidos de <strong>almoço</strong> (até 08:30) e <strong>janta</strong> (até 13:30) disponíveis</div>';
+  else if(dp.indexOf('Almoço')>=0)av='<div class="aviso">Pedidos de <strong>almoço</strong> aceitos até as <strong>08:30</strong></div>';
+  else av='<div class="aviso">Pedidos de <strong>janta</strong> aceitos até as <strong>13:30</strong></div>';
+  return '<div class="logo"><h1>Pedido de Refeição</h1><p>RP Construbase — Mogi Guaçu</p></div>'+
+    '<div class="nav-tabs"><button class="tab active">Fazer pedido</button><button class="tab" onclick="abrirAdmin()">Painel RH</button></div>'+
+    av+opInfo+repBox+
+    '<div class="card">'+
+    '<label>Matrícula</label>'+
+    '<div class="bw"><input type="text" id="mat" placeholder="Digite a matrícula" oninput="buscaMat(this.value)" autocomplete="off" style="margin-bottom:0;padding-right:40px"/><span class="bw-ico" onclick="abrirBusca()">🔍</span></div>'+
+    '<div id="sug" class="sug" style="display:none"></div>'+
+    '<div id="mat-err" class="mat-err" style="display:none">Matrícula não encontrada.</div>'+
+    '<label style="margin-top:6px">Nome completo</label>'+
+    '<input type="text" id="nome-f" placeholder="Preenchido automaticamente" style="background:#f9f9f9" readonly/>'+
+    '<label>Local de entrega</label>'+
+    '<select id="local"><option value="">Selecione o local...</option>'+opL+'</select>'+
+    '<label>Refeição</label>'+
+    '<select id="tipo"><option value="">Selecione...</option>'+(enc&&!operador?'<option disabled>Pedidos encerrados</option>':opT)+'</select>'+
+    '<label>Possui alguma restrição alimentar?</label>'+
+    '<div class="sn"><button id="bs" onclick="setRest(true)">Sim</button><button id="bn" onclick="setRest(false)">Não</button></div>'+
+    '<div id="bloco-rest" style="display:none">'+
+    '<label>Selecione as restrições</label>'+
+    '<div style="border:1px solid #eee;border-radius:8px;padding:4px 10px;margin-bottom:10px">'+chks+'</div>'+
+    '<label>Outra restrição <span style="font-weight:400;color:#aaa">(opcional)</span></label>'+
+    '<textarea id="outra-rest" placeholder="Descreva outra restrição..."></textarea>'+
+    '</div>'+
+    '<button class="btn-g" '+(enc&&!operador?'disabled':'')+' onclick="fazerPed()">'+(enc&&!operador?'Fora do horário':'Confirmar pedido')+'</button>'+
+    '</div>';
 }
 
 function buildComp(){
   if(!ultimoPed)return buildPed();
-  const p=ultimoPed;
-  const rl=p.restricoes&&p.restricoes.length>0?`<div class="comp-linha"><span class="key">Restrições</span><span class="val" style="color:#A32D2D">${p.restricoes.join(', ')}</span></div>`:'';
-  return `<div class="logo"><h1>Pedido de Refeição</h1><p>RP Construbase — Mogi Guaçu</p></div>
-    <div class="card">
-      <div style="text-align:center;margin-bottom:1rem"><div style="font-size:40px;margin-bottom:8px">✅</div><div style="font-size:16px;font-weight:700">Pedido registrado!</div></div>
-      <div class="protocolo-box"><div class="lbl">Protocolo</div><div class="num">${p.protocolo}</div></div>
-      <div style="margin-top:12px">
-        <div class="comp-linha"><span class="key">Nome</span><span class="val">${p.nome}</span></div>
-        <div class="comp-linha"><span class="key">Refeição</span><span class="val">${p.tipo}</span></div>
-        <div class="comp-linha"><span class="key">Local</span><span class="val">${p.local}</span></div>
-        <div class="comp-linha"><span class="key">Data</span><span class="val">${p.data}</span></div>
-        <div class="comp-linha"><span class="key">Hora</span><span class="val">${p.hora}</span></div>
-        <div class="comp-linha"><span class="key">Restaurante</span><span class="val">${p.restaurante||'-'}</span></div>
-        ${rl}
-      </div>
-    </div>
-    <button class="btn-primary" onclick="gerarPDF()">Baixar comprovante (PDF)</button>
-    <button class="btn-secondary" onclick="proximoPedido()">Próximo pedido</button>`;
+  var p=ultimoPed;
+  var rl=p.restricoes&&p.restricoes.length>0?'<div class="cl"><span class="k">Restrições</span><span class="v" style="color:#A32D2D">'+p.restricoes.join(', ')+'</span></div>':'';
+  return '<div class="logo"><h1>Pedido de Refeição</h1><p>RP Construbase — Mogi Guaçu</p></div>'+
+    '<div class="card">'+
+    '<div style="text-align:center;margin-bottom:1rem"><div style="font-size:40px;margin-bottom:8px">✅</div><div style="font-size:16px;font-weight:700">Pedido registrado!</div></div>'+
+    '<div class="proto-box"><div class="lbl">Protocolo</div><div class="num">'+p.protocolo+'</div></div>'+
+    '<div style="margin-top:12px">'+
+    '<div class="cl"><span class="k">Nome</span><span class="v">'+p.nome+'</span></div>'+
+    '<div class="cl"><span class="k">Refeição</span><span class="v">'+p.tipo+'</span></div>'+
+    '<div class="cl"><span class="k">Local</span><span class="v">'+p.local+'</span></div>'+
+    '<div class="cl"><span class="k">Data</span><span class="v">'+p.data+'</span></div>'+
+    '<div class="cl"><span class="k">Hora</span><span class="v">'+p.hora+'</span></div>'+
+    '<div class="cl"><span class="k">Restaurante</span><span class="v">'+(p.restaurante||'-')+'</span></div>'+
+    rl+'</div></div>'+
+    '<button class="btn-g" onclick="gerarPDF()">Baixar comprovante (PDF)</button>'+
+    '<button class="btn-o" onclick="proxPed()">Próximo pedido</button>';
 }
 
 function buildAdm(){
-  const alm=doDia('Almoço'),jan=doDia('Janta'),hj=hoje(),rd=restsDia();
-  const isRH=operador&&operador.tipo==='rh';
-  const nav=`<div class="nav-tabs"><button class="tab" onclick="view='pedido';render()">Fazer pedido</button><button class="tab active">Painel RH</button></div>
-    <div style="font-size:12px;color:#666;margin-bottom:1rem">Logado: <strong>${operador?.n||'—'}</strong><span class="nivel-badge ${operador?.tipo==='rh'?'nivel-rh':'nivel-enc'}">${(operador?.tipo||'').toUpperCase()}</span></div>
-    <div class="admin-tabs">
-      <button class="admin-tab ${aview==='lista'?'active':''}" onclick="aview='lista';render()">Lista</button>
-      <button class="admin-tab ${aview==='enviar'?'active':''}" onclick="aview='enviar';render()">Enviar</button>
-      <button class="admin-tab ${aview==='exportar'?'active':''}" onclick="aview='exportar';render()">Exportar</button>
-      <button class="admin-tab ${aview==='config'?'active':''}" onclick="aview='config';render()">Config</button>
-    </div>`;
+  var alm=doDia('Almoço'),jan=doDia('Janta'),hj=hoje(),rd=restsDia();
+  var isRH=operador&&operador.tipo==='rh';
+  var nav='<div class="nav-tabs"><button class="tab" onclick="view='pedido';render()">Fazer pedido</button><button class="tab active">Painel RH</button></div>'+
+    '<div style="font-size:12px;color:#666;margin-bottom:1rem">Logado: <strong>'+(operador?operador.n:'—')+'</strong><span class="nb '+(operador&&operador.tipo==='rh'?'nb-rh':'nb-enc')+'">'+(operador?operador.tipo.toUpperCase():'')+'</span></div>'+
+    '<div class="adm-tabs">'+
+    '<button class="adm-tab '+(aview==='lista'?'active':'')+'" onclick="aview='lista';render()">Lista</button>'+
+    '<button class="adm-tab '+(aview==='enviar'?'active':'')+'" onclick="aview='enviar';render()">Enviar</button>'+
+    '<button class="adm-tab '+(aview==='exportar'?'active':'')+'" onclick="aview='exportar';render()">Exportar</button>'+
+    '<button class="adm-tab '+(aview==='config'?'active':'')+'" onclick="aview='config';render()">Config</button>'+
+    '</div>';
+
   if(aview==='lista'){
-    const almoco=doDia('Almoço',isRH),jan=doDia('Janta',isRH);
-    const rg=(l,tp)=>{
-      if(!l.length)return`<p class="empty-state">Nenhum pedido de ${tp.toLowerCase()} hoje</p>`;
-      const g=porLocal(l);let h='';
-      Object.entries(g).forEach(([loc,its])=>{
-        h+=`<p class="grupo-label">${loc} — ${its.length}</p>`;
-        its.forEach(p=>{const rb=p.restricoes&&p.restricoes.length>0?`<div><span class="restricao-badge">⚠ ${p.restricoes.join(', ')}</span></div>`:'';h+=`<div class="pedido-item"><div><div class="pedido-nome">${p.nome}</div><div style="font-size:11px;color:#999">Mat: ${p.matricula||'-'} | Prot: ${p.protocolo||'-'}</div>${rb}</div>${isRH?`<button class="btn-sm" onclick="remover('${p.id}')">Remover</button>`:''}</div>`;});
+    function rg(l,tp){
+      if(!l.length)return'<p class="empty">Nenhum pedido de '+tp.toLowerCase()+' hoje</p>';
+      var g=porLocal(l),h='';
+      Object.keys(g).forEach(function(loc){
+        var its=g[loc];
+        h+='<p class="grp-lbl">'+loc+' — '+its.length+'</p>';
+        its.forEach(function(p){
+          var rb=p.restricoes&&p.restricoes.length>0?'<div><span class="rest-badge">⚠ '+p.restricoes.join(', ')+'</span></div>':'';
+          h+='<div class="ped-item"><div><div class="ped-nome">'+p.nome+'</div><div style="font-size:11px;color:#999">Mat: '+(p.matricula||'-')+' | Prot: '+(p.protocolo||'-')+'</div>'+rb+'</div>'+(isRH?'<button class="btn-sm" onclick="remover(''+p.id+'')">Remover</button>':'')+'</div>';
+        });
       });
-      return h+`<div class="total-bar"><span>Total ${tp}</span><span>${l.length} refeições</span></div>`;
-    };
-    return`<div class="logo"><h1>Painel RH</h1><p>${hj}</p></div>${nav}
-      <div class="card"><div style="font-size:16px;font-weight:700;margin-bottom:1rem">Almoço <span class="badge badge-alm">${alm.length}</span></div>${rg(alm,'Almoço')}</div>
-      <div class="card"><div style="font-size:16px;font-weight:700;margin-bottom:1rem">Janta <span class="badge badge-jan">${jan.length}</span></div>${rg(jan,'Janta')}</div>`;
+      return h+'<div class="total-bar"><span>Total '+tp+'</span><span>'+l.length+' refeições</span></div>';
+    }
+    var almTodos=doDia('Almoço',isRH),janTodos=doDia('Janta',isRH);
+    return '<div class="logo"><h1>Painel RH</h1><p>'+hj+'</p></div>'+nav+
+      '<div class="card"><div style="font-size:16px;font-weight:700;margin-bottom:1rem">Almoço <span class="badge ba">'+almTodos.length+'</span></div>'+rg(almTodos,'Almoço')+'</div>'+
+      '<div class="card"><div style="font-size:16px;font-weight:700;margin-bottom:1rem">Janta <span class="badge bj">'+janTodos.length+'</span></div>'+rg(janTodos,'Janta')+'</div>';
   }
+
   if(aview==='enviar'){
-    const opR=rd.map(r=>`<option value="${r.nome}" data-email="${r.email}" data-wa="${r.whatsapp}">${r.nome}</option>`).join('');
-    const opCC=centrosCusto.map(c=>`<option value="${c.id} — ${c.nome} (${c.local})">${c.id} — ${c.nome} (${c.local})</option>`).join('');
-    return`<div class="logo"><h1>Enviar pedido</h1><p>${hj}</p></div>${nav}
-      <div class="card">
-        <div class="info-box">Cópias: <strong>${EMAIL_RH}</strong> e <strong>${EMAIL_DP}</strong></div>
-        <label>Restaurante</label>
-        <select id="rest-sel" onchange="selRest(this)" style="margin-bottom:6px"><option value="">Selecione...</option>${opR}</select>
-        <p id="rest-em" style="font-size:12px;color:#1D9E75;margin-bottom:1rem;display:none"></p>
-        <label>Centro de custo</label>
-        <div class="busca-wrapper" style="margin-bottom:6px">
-          <input type="text" id="cc-input" placeholder="Digite o ID ou nome do centro de custo..." oninput="filtrarCC(this.value)" autocomplete="off" style="margin-bottom:0;padding-right:40px"/>
-          <span class="busca-ico" onclick="abrirBuscaCC()">🔍</span>
-        </div>
-        <div id="cc-lista" style="display:none;border:1px solid #ddd;border-radius:8px;max-height:180px;overflow-y:auto;margin-bottom:1rem;background:#fff;"></div>
-        <input type="hidden" id="cc-sel" value=""/>
-        ${alm.length>0?`<button class="btn-enviar alm" id="btn-alm" onclick="enviarEmail('Almoço')">✉ E-mail almoço (${alm.length})</button><button class="btn-wa" id="btn-alm-wa" onclick="enviarWA('Almoço')">WhatsApp almoço (${alm.length})</button>`:''}
-        ${jan.length>0?`<button class="btn-enviar jan" id="btn-jan" onclick="enviarEmail('Janta')" style="margin-top:8px">✉ E-mail janta (${jan.length})</button><button class="btn-wa" id="btn-jan-wa" onclick="enviarWA('Janta')" style="margin-top:8px">WhatsApp janta (${jan.length})</button>`:''}
-        ${alm.length===0&&jan.length===0?`<p class="empty-state">Nenhum pedido hoje</p>`:''}
-      </div>`;
+    var opR=rd.map(function(r){return '<option value="'+r.nome+'" data-email="'+r.email+'" data-wa="'+r.whatsapp+'">'+r.nome+'</option>';}).join('');
+    return '<div class="logo"><h1>Enviar pedido</h1><p>'+hj+'</p></div>'+nav+
+      '<div class="card">'+
+      '<div class="info-box">Cópias: <strong>'+EMAIL_RH+'</strong> e <strong>'+EMAIL_DP+'</strong></div>'+
+      '<label>Restaurante</label>'+
+      '<select id="rest-sel" onchange="selRest(this)" style="margin-bottom:6px"><option value="">Selecione...</option>'+opR+'</select>'+
+      '<p id="rest-em" style="font-size:12px;color:#1D9E75;margin-bottom:1rem;display:none"></p>'+
+      '<label>Centro de custo</label>'+
+      '<div class="bw" style="margin-bottom:6px"><input type="text" id="cc-inp" placeholder="Digite ID ou nome..." oninput="filtraCC(this.value)" autocomplete="off" style="margin-bottom:0;padding-right:40px"/><span class="bw-ico" onclick="document.getElementById('cc-inp').focus()">🔍</span></div>'+
+      '<div id="cc-lista" style="display:none;border:1px solid #ddd;border-radius:8px;max-height:180px;overflow-y:auto;margin-bottom:1rem;background:#fff;"></div>'+
+      '<input type="hidden" id="cc-hid" value=""/>'+
+      (alm.length>0?'<button class="btn-env alm" id="btn-alm" onclick="envEmail('Almoço')">✉ E-mail almoço ('+alm.length+')</button><button class="btn-wa" onclick="envWA('Almoço')">WhatsApp almoço ('+alm.length+')</button>':'')+
+      (jan.length>0?'<button class="btn-env jan" id="btn-jan" onclick="envEmail('Janta')" style="margin-top:8px">✉ E-mail janta ('+jan.length+')</button><button class="btn-wa" onclick="envWA('Janta')" style="margin-top:8px">WhatsApp janta ('+jan.length+')</button>':'')+
+      (alm.length===0&&jan.length===0?'<p class="empty">Nenhum pedido hoje</p>':'')+
+      '</div>';
   }
+
   if(aview==='exportar'){
-    const td=doDia(null,isRH);let li='';
-    td.forEach(p=>{li+=`<tr><td>${p.protocolo||''}</td><td>${p.matricula||''}</td><td>${p.nome}</td><td>${p.tipo}</td><td>${p.local}</td><td>${p.data}</td><td>${p.hora||''}</td><td>${p.restaurante||''}</td><td>${p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):''}</td><td>${p.centroCusto||''}</td></tr>`;});
-    return`<div class="logo"><h1>Exportar dados</h1><p>${hj}</p></div>${nav}
-      <div class="card">${td.length===0?`<p class="empty-state">Nenhum pedido hoje</p>`:`<button class="btn-export" onclick="baixarCSV()">Baixar .CSV</button><div class="overflow-x"><table class="export-table"><thead><tr><th>Protocolo</th><th>Matrícula</th><th>Nome</th><th>Pedido</th><th>Local</th><th>Data</th><th>Hora</th><th>Restaurante</th><th>Restrições</th><th>Centro de Custo</th></tr></thead><tbody>${li}</tbody></table></div>`}</div>`;
+    var td=doDia(null,isRH),li='';
+    td.forEach(function(p){li+='<tr><td>'+(p.protocolo||'')+'</td><td>'+(p.matricula||'')+'</td><td>'+p.nome+'</td><td>'+p.tipo+'</td><td>'+p.local+'</td><td>'+p.data+'</td><td>'+(p.hora||'')+'</td><td>'+(p.restaurante||'')+'</td><td>'+(p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):'')+'</td><td>'+(p.centroCusto||'')+'</td></tr>';});
+    return '<div class="logo"><h1>Exportar dados</h1><p>'+hj+'</p></div>'+nav+
+      '<div class="card">'+(td.length===0?'<p class="empty">Nenhum pedido hoje</p>':
+      '<button class="btn-exp" onclick="baixarCSV()">Baixar .CSV</button>'+
+      '<div class="ox"><table class="etab"><thead><tr><th>Protocolo</th><th>Matrícula</th><th>Nome</th><th>Pedido</th><th>Local</th><th>Data</th><th>Hora</th><th>Restaurante</th><th>Restrições</th><th>Centro de Custo</th></tr></thead><tbody>'+li+'</tbody></table></div>')+'</div>';
   }
-  if(aview==='config'&&isRH){
-    return`<div class="logo"><h1>Configurações</h1></div>${nav}
-      <div class="card">
-        <div class="info-box">Dados gerenciados pela planilha Google Sheets.</div>
-        <button class="btn-primary" onclick="recarregar()">Recarregar dados da planilha</button>
-        <div class="sep"><p style="font-size:13px;color:#666;margin-bottom:10px">Segurança</p>
-          ${isRH?`<button class="btn-secondary" style="margin-top:0" onclick="abrirAlt()">Alterar senha do RH</button>`:''}
-          <button class="btn-secondary" style="margin-top:8px" onclick="abrirTrocarSenha('${operador?.m||''}','${operador?.n||''}')">Alterar minha senha</button>
-        </div>
-        <div class="sep"><p style="font-size:13px;color:#666;margin-bottom:8px">Remover pedidos de hoje</p><button class="btn-sm" style="color:#e24b4a;border-color:#e24b4a" onclick="abrirLimpar()">Limpar pedidos de hoje</button></div>
-      </div>`;
+
+  if(aview==='config'){
+    return '<div class="logo"><h1>Configurações</h1></div>'+nav+
+      '<div class="card">'+
+      '<div class="info-box">Dados gerenciados pela planilha Google Sheets.</div>'+
+      '<button class="btn-g" onclick="recarregar()">Recarregar dados da planilha</button>'+
+      (isRH?'<div class="sep"><p style="font-size:13px;color:#666;margin-bottom:10px">Senha do painel RH</p><button class="btn-o" style="margin-top:0" onclick="abrirAlt()">Alterar senha do painel</button></div>':'')+
+      (operador&&operador.m!=='rh'?'<div class="sep"><p style="font-size:13px;color:#666;margin-bottom:8px">Minha senha</p><button class="btn-o" style="margin-top:0" onclick="abrirTrocarPessoal()">Alterar minha senha</button></div>':'')+
+      (isRH?'<div class="sep"><p style="font-size:13px;color:#666;margin-bottom:8px">Remover pedidos de hoje</p><button class="btn-sm" style="color:#e24b4a;border-color:#e24b4a" onclick="abrirLimpar()">Limpar pedidos de hoje</button></div>':'')+
+      '</div>';
   }
+  return '';
 }
 
+function setRest(v){
+  temRest=v;
+  var bs=document.getElementById('bs'),bn=document.getElementById('bn'),bl=document.getElementById('bloco-rest');
+  if(bs)bs.className=v?'ss':'';if(bn)bn.className=v?'':'sn2';if(bl)bl.style.display=v?'block':'none';
+}
+function getRests(){
+  if(!temRest)return[];
+  var s=[];
+  var cks=document.querySelectorAll('.rck:checked');
+  for(var i=0;i<cks.length;i++)s.push(cks[i].value);
+  var o=document.getElementById('outra-rest');if(o&&o.value.trim())s.push(o.value.trim());
+  return s;
+}
 function selRest(sel){
-  const opt=sel.options[sel.selectedIndex];
-  const em=(opt.getAttribute('data-email')||'').trim(),wa=(opt.getAttribute('data-wa')||'').replace(/\D/g,'');
+  var opt=sel.options[sel.selectedIndex];
+  var em=(opt.getAttribute('data-email')||'').trim();
+  var wa=(opt.getAttribute('data-wa')||'').replace(/\D/g,'');
   restSel=sel.value?{nome:sel.value,email:em,whatsapp:wa}:null;
-  const lb=document.getElementById('rest-em');
-  if(lb){if(em){lb.style.display='block';lb.textContent='✓ '+em+(wa?' | WhatsApp: '+wa:'');}else lb.style.display='none';}
+  var lb=document.getElementById('rest-em');
+  if(lb){if(em){lb.style.display='block';lb.textContent='✓ '+em+(wa?' | WA: '+wa:'');}else lb.style.display='none';}
 }
-
 function fazerPed(){
-  const mat=document.getElementById('mat').value.trim();
-  const nome=document.getElementById('nome-f').value.trim();
-  const local=document.getElementById('local').value;
-  const tipo=document.getElementById('tipo').value;
+  var mat=document.getElementById('mat').value.trim();
+  var nome=document.getElementById('nome-f').value.trim();
+  var local=document.getElementById('local').value;
+  var tipo=document.getElementById('tipo').value;
   if(!mat||!nome||!local||!tipo){alert('Preencha todos os campos.');return;}
-  if(temRestricao===null){alert('Responda se possui restrição alimentar.');return;}
-  const f=funcs.find(x=>x.m.toUpperCase()===mat.toUpperCase());
+  if(temRest===null){alert('Responda se possui restrição alimentar.');return;}
+  var f=funcs.filter(function(x){return x.m.toUpperCase()===mat.toUpperCase();})[0];
   if(!f){alert('Matrícula não autorizada.');return;}
-  const hj=hoje();
-  if(pedidos.find(p=>p.matricula===f.m&&p.tipo===tipo&&p.data===hj)){alert(`${f.n} já tem pedido de ${tipo} hoje.`);return;}
-  const rd=restsDia();
-  const np={id:Date.now().toString(),protocolo:proto(),matricula:f.m,nome:f.n,local,tipo,data:hj,hora:agora(),restaurante:rd.length>0?rd[0].nome:'',restricoes:getRestricoesSelecionadas(),operador:operador?.m||null,centroCusto:''};
-  pedidos.push(np);salvar();ultimoPed=np;temRestricao=null;view='comp';render();
+  var hj=hoje();
+  if(pedidos.filter(function(p){return p.matricula===f.m&&p.tipo===tipo&&p.data===hj;}).length>0){alert(f.n+' já tem pedido de '+tipo+' hoje.');return;}
+  var rd=restsDia();
+  var np={id:Date.now().toString(),protocolo:proto(),matricula:f.m,nome:f.n,local:local,tipo:tipo,data:hj,hora:agora(),restaurante:rd.length>0?rd[0].nome:'',restricoes:getRests(),operador:operador?operador.m:null,centroCusto:''};
+  pedidos.push(np);salvar();ultimoPed=np;temRest=null;view='comp';render();
 }
-
-function proximoPedido(){
-  const local=ultimoPed?.local||'',tipo=ultimoPed?.tipo||'';
+function proxPed(){
+  var local=ultimoPed?ultimoPed.local:'';
+  var tipo=ultimoPed?ultimoPed.tipo:'';
   view='pedido';render();
-  setTimeout(()=>{const ls=document.getElementById('local'),tp=document.getElementById('tipo');if(ls&&local)ls.value=local;if(tp&&tipo)tp.value=tipo;},100);
+  setTimeout(function(){
+    var ls=document.getElementById('local'),tp=document.getElementById('tipo');
+    if(ls&&local)ls.value=local;if(tp&&tipo)tp.value=tipo;
+  },100);
 }
-
 function repetirOntem(){
-  const ontem=deOntem(),hj=hoje();let count=0;
-  ontem.forEach(p=>{if(!pedidos.find(x=>x.matricula===p.matricula&&x.tipo===p.tipo&&x.data===hj)){pedidos.push({...p,id:Date.now().toString()+Math.random(),protocolo:proto(),data:hj,hora:agora(),operador:operador?.m||null});count++;}});
-  salvar();alert(`${count} pedido(s) repetido(s)!`);render();
+  var ontem=deOntem(),hj=hoje(),count=0;
+  ontem.forEach(function(p){
+    if(!pedidos.filter(function(x){return x.matricula===p.matricula&&x.tipo===p.tipo&&x.data===hj;}).length){
+      pedidos.push({id:Date.now().toString()+Math.random(),protocolo:proto(),matricula:p.matricula,nome:p.nome,local:p.local,tipo:p.tipo,data:hj,hora:agora(),restaurante:p.restaurante,restricoes:p.restricoes,operador:operador?operador.m:null,centroCusto:''});
+      count++;
+    }
+  });
+  salvar();alert(count+' pedido(s) repetido(s)!');render();
 }
+function remover(id){if(!confirm('Remover este pedido?'))return;pedidos=pedidos.filter(function(p){return p.id!==id;});salvar();render();}
 
-const remover=(id)=>{if(!confirm('Remover este pedido?'))return;pedidos=pedidos.filter(p=>p.id!==id);salvar();render();};
-
-async function enviarEmail(tipo){
+function envEmail(tipo){
   if(!restSel||!restSel.email){alert('Selecione o restaurante primeiro.');return;}
   if(enviando)return;enviando=true;
-  const bid=tipo==='Almoço'?'btn-alm':'btn-jan',btn=document.getElementById(bid);
-  if(btn){btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Enviando...';}
-  const cc=document.getElementById('cc-sel')?.value||'';
-  // Salvar centro de custo nos pedidos do dia
-  if(cc){
-    const hj=hoje();
-    pedidos=pedidos.map(p=>p.data===hj&&p.tipo===tipo?{...p,centroCusto:cc}:p);
-    salvar();
-  }
-  try{
-    await emailjs.send(SVC,TPL,{to_email:restSel.email,cc_email:EMAIL_RH+','+EMAIL_DP,subject:`Pedido de Refeição - ${tipo} - RP Construbase - ${hoje()}`,message:corpo(tipo,cc)});
-    alert(`E-mail de ${tipo} enviado para ${restSel.nome}!`);
-    if(btn){btn.disabled=false;btn.innerHTML=`✉ E-mail ${tipo.toLowerCase()} (${doDia(tipo).length})`;}
-  }catch(e){alert('Erro ao enviar.\n\n'+(e.text||JSON.stringify(e)));if(btn){btn.disabled=false;btn.innerHTML=`✉ E-mail ${tipo.toLowerCase()} (${doDia(tipo).length})`;}}
+  var bid=tipo==='Almoço'?'btn-alm':'btn-jan';
+  var btn=document.getElementById(bid);
+  if(btn){btn.disabled=true;btn.innerHTML='<span class="spin"></span>Enviando...';}
+  var cc=document.getElementById('cc-hid')?document.getElementById('cc-hid').value:'';
+  if(cc){var hj=hoje();pedidos=pedidos.map(function(p){return p.data===hj&&p.tipo===tipo&&p.operador===(operador?operador.m:null)?Object.assign({},p,{centroCusto:cc}):p;});salvar();}
+  emailjs.send(SVC,TPL,{to_email:restSel.email,cc_email:EMAIL_RH+','+EMAIL_DP,subject:'Pedido de Refeição - '+tipo+' - RP Construbase - '+hoje(),message:corpo(tipo,cc,false)})
+    .then(function(){
+      alert('E-mail de '+tipo+' enviado para '+restSel.nome+'!');
+      if(btn){btn.disabled=false;btn.innerHTML='✉ E-mail '+tipo.toLowerCase()+' ('+doDia(tipo).length+')';}
+    }).catch(function(e){
+      alert('Erro ao enviar.\n\n'+(e.text||JSON.stringify(e)));
+      if(btn){btn.disabled=false;btn.innerHTML='✉ E-mail '+tipo.toLowerCase()+' ('+doDia(tipo).length+')';}
+    });
   enviando=false;
 }
-
-function enviarWA(tipo){
+function envWA(tipo){
   if(!restSel){alert('Selecione o restaurante primeiro.');return;}
   if(!restSel.whatsapp){alert('Este restaurante não tem WhatsApp cadastrado.');return;}
-  const cc=document.getElementById('cc-sel')?.value||'';
-  if(cc){
-    const hj=hoje();
-    pedidos=pedidos.map(p=>p.data===hj&&p.tipo===tipo?{...p,centroCusto:cc}:p);
-    salvar();
-  }
-  window.open(`https://wa.me/${restSel.whatsapp}?text=${encodeURIComponent(corpo(tipo,cc,true))}`,'_blank');
+  var cc=document.getElementById('cc-hid')?document.getElementById('cc-hid').value:'';
+  if(cc){var hj=hoje();pedidos=pedidos.map(function(p){return p.data===hj&&p.tipo===tipo&&p.operador===(operador?operador.m:null)?Object.assign({},p,{centroCusto:cc}):p;});salvar();}
+  window.open('https://wa.me/'+restSel.whatsapp+'?text='+encodeURIComponent(corpo(tipo,cc,true)),'_blank');
 }
 
 function baixarCSV(){
-  const td=doDia(null);
-  let c='Protocolo,Matrícula,Nome,Pedido,Local de Entrega,Data,Hora,Restaurante,Restrições,Centro de Custo\n';
-  td.forEach(p=>{c+=`"${p.protocolo||''}","${p.matricula||''}","${p.nome}","${p.tipo}","${p.local}","${p.data}","${p.hora||''}","${p.restaurante||''}","${p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):''}","${p.centroCusto||''}" \n`;});
-  const b=new Blob(['\uFEFF'+c],{type:'text/csv;charset=utf-8'});
-  const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=`pedidos_rp_${hoje().replace(/\//g,'-')}.csv`;a.click();URL.revokeObjectURL(u);
+  var td=doDia(null,operador&&operador.tipo==='rh');
+  var c='Protocolo,Matrícula,Nome,Pedido,Local de Entrega,Data,Hora,Restaurante,Restrições,Centro de Custo\n';
+  td.forEach(function(p){c+='"'+(p.protocolo||'')+'","'+(p.matricula||'')+'","'+p.nome+'","'+p.tipo+'","'+p.local+'","'+p.data+'","'+(p.hora||'')+'","'+(p.restaurante||'')+'","'+(p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):'')+'","'+(p.centroCusto||'')+'"\n';});
+  var b=new Blob(['\uFEFF'+c],{type:'text/csv;charset=utf-8'});
+  var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='pedidos_rp_'+hoje().replace(/\//g,'-')+'.csv';a.click();URL.revokeObjectURL(u);
 }
 
 function gerarPDF(){
-  if(!ultimoPed)return;const p=ultimoPed;
-  const rr=p.restricoes&&p.restricoes.length>0?`<tr><td>Restrições</td><td style="color:#A32D2D">${p.restricoes.join(', ')}</td></tr>`:'';
-  const h=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Comprovante ${p.protocolo}</title><style>body{font-family:Arial,sans-serif;max-width:400px;margin:40px auto;padding:20px;}.hd{text-align:center;border-bottom:2px solid #1D9E75;padding-bottom:16px;margin-bottom:20px;}.hd h1{font-size:18px;color:#1D9E75;margin:0;}.hd p{font-size:12px;color:#666;margin-top:4px;}.pb{text-align:center;background:#f0f9f5;border:1px solid #b2e0d0;border-radius:8px;padding:14px;margin:16px 0;}.pb .l{font-size:11px;color:#666;text-transform:uppercase;}.pb .n{font-size:28px;font-weight:700;color:#1D9E75;letter-spacing:3px;}table{width:100%;border-collapse:collapse;}td{padding:9px 4px;border-bottom:1px solid #f0f0f0;font-size:13px;}td:first-child{color:#888;width:40%;}td:last-child{font-weight:700;}.ft{text-align:center;font-size:11px;color:#bbb;margin-top:24px;}</style></head><body><div class="hd"><h1>Comprovante de Pedido</h1><p>RP Construbase — Mogi Guaçu</p></div><div class="pb"><div class="l">Protocolo</div><div class="n">${p.protocolo}</div></div><table><tr><td>Nome</td><td>${p.nome}</td></tr><tr><td>Refeição</td><td>${p.tipo}</td></tr><tr><td>Local</td><td>${p.local}</td></tr><tr><td>Data</td><td>${p.data}</td></tr><tr><td>Hora</td><td>${p.hora}</td></tr><tr><td>Restaurante</td><td>${p.restaurante||'-'}</td></tr>${rr}</table><div class="ft">RP Construbase — Mogi Guaçu</div><script>window.onload=function(){window.print();}<\/script></body></html>`;
+  if(!ultimoPed)return;var p=ultimoPed;
+  var rr=p.restricoes&&p.restricoes.length>0?'<tr><td>Restrições</td><td style="color:#A32D2D">'+p.restricoes.join(', ')+'</td></tr>':'';
+  var h='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Comprovante '+p.protocolo+'</title><style>body{font-family:Arial,sans-serif;max-width:400px;margin:40px auto;padding:20px;}.hd{text-align:center;border-bottom:2px solid #1D9E75;padding-bottom:16px;margin-bottom:20px;}.hd h1{font-size:18px;color:#1D9E75;margin:0;}.hd p{font-size:12px;color:#666;margin-top:4px;}.pb{text-align:center;background:#f0f9f5;border:1px solid #b2e0d0;border-radius:8px;padding:14px;margin:16px 0;}.pb .l{font-size:11px;color:#666;text-transform:uppercase;}.pb .n{font-size:28px;font-weight:700;color:#1D9E75;letter-spacing:3px;}table{width:100%;border-collapse:collapse;}td{padding:9px 4px;border-bottom:1px solid #f0f0f0;font-size:13px;}td:first-child{color:#888;width:40%;}td:last-child{font-weight:700;}.ft{text-align:center;font-size:11px;color:#bbb;margin-top:24px;}</style></head><body><div class="hd"><h1>Comprovante de Pedido</h1><p>RP Construbase — Mogi Guaçu</p></div><div class="pb"><div class="l">Protocolo</div><div class="n">'+p.protocolo+'</div></div><table><tr><td>Nome</td><td>'+p.nome+'</td></tr><tr><td>Refeição</td><td>'+p.tipo+'</td></tr><tr><td>Local</td><td>'+p.local+'</td></tr><tr><td>Data</td><td>'+p.data+'</td></tr><tr><td>Hora</td><td>'+p.hora+'</td></tr><tr><td>Restaurante</td><td>'+(p.restaurante||'-')+'</td></tr>'+rr+'</table><div class="ft">RP Construbase — Mogi Guaçu</div><scr'+'ipt>window.onload=function(){window.print();}</scr'+'ipt></body></html>';
   window.open(URL.createObjectURL(new Blob([h],{type:'text/html'})),'_blank');
 }
 
-async function recarregar(){
+function recarregar(){
   document.getElementById('app').innerHTML='<div style="text-align:center;padding:3rem;color:#666">Atualizando dados...</div>';
-  await load();alert('Dados atualizados!');aview='config';render();
+  load();
 }
+
+// Inicializar emailjs depois que o script carregar
+window.addEventListener('load',function(){
+  if(typeof emailjs!=='undefined'){emailjs.init(EJSKEY);}
+});
 
 render();
 load();
