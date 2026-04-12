@@ -480,6 +480,7 @@ function buscaMat(val){
 }
 
 // Busca centro de custo
+function focusCC(){var el=document.getElementById('cc-inp');if(el)el.focus();}
 function filtraCC(v){
   var lista=document.getElementById('cc-lista');
   if(!lista)return;
@@ -632,11 +633,11 @@ function buildAdm(){
       '<select id="rest-sel" onchange="selRest(this)" style="margin-bottom:6px"><option value="">Selecione...</option>'+opR+'</select>'+
       '<p id="rest-em" style="font-size:12px;color:#1D9E75;margin-bottom:1rem;display:none"></p>'+
       '<label>Centro de custo</label>'+
-      '<div class="bw" style="margin-bottom:6px"><input type="text" id="cc-inp" placeholder="Digite ID ou nome..." oninput="filtraCC(this.value)" autocomplete="off" style="margin-bottom:0;padding-right:40px"/><span class="bw-ico" onclick="document.getElementById('cc-inp').focus()">🔍</span></div>'+
+      '<div class="bw" style="margin-bottom:6px"><input type="text" id="cc-inp" placeholder="Digite ID ou nome..." oninput="filtraCC(this.value)" autocomplete="off" style="margin-bottom:0;padding-right:40px"/><span class="bw-ico" onclick="focusCC()">🔍</span></div>'+
       '<div id="cc-lista" style="display:none;border:1px solid #ddd;border-radius:8px;max-height:180px;overflow-y:auto;margin-bottom:1rem;background:#fff;"></div>'+
       '<input type="hidden" id="cc-hid" value=""/>'+
-      (alm.length>0?'<button class="btn-env alm" id="btn-alm" onclick="envEmail('Almoço')">✉ E-mail almoço ('+alm.length+')</button><button class="btn-wa" onclick="envWA('Almoço')">WhatsApp almoço ('+alm.length+')</button>':'')+
-      (jan.length>0?'<button class="btn-env jan" id="btn-jan" onclick="envEmail('Janta')" style="margin-top:8px">✉ E-mail janta ('+jan.length+')</button><button class="btn-wa" onclick="envWA('Janta')" style="margin-top:8px">WhatsApp janta ('+jan.length+')</button>':'')+
+      (alm.length>0?'<button class="btn-env alm" id="btn-alm" onclick="envEmail(&apos;Almoço&apos;)">✉ E-mail almoço ('+alm.length+')</button><button class="btn-wa" onclick="envWA(&apos;Almoço&apos;)">WhatsApp almoço ('+alm.length+')</button>':'')+
+      (jan.length>0?'<button class="btn-env jan" id="btn-jan" onclick="envEmail(&apos;Janta&apos;)" style="margin-top:8px">✉ E-mail janta ('+jan.length+')</button><button class="btn-wa" onclick="envWA(&apos;Janta&apos;)" style="margin-top:8px">WhatsApp janta ('+jan.length+')</button>':'')+
       (alm.length===0&&jan.length===0?'<p class="empty">Nenhum pedido hoje</p>':'')+
       '</div>';
   }
