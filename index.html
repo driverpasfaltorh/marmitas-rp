@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- saved from url=(0046)file:///C:/Users/Deivis/Downloads/index_1.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pedido de Refeição — RP Construbase</title>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="./index_files/email.min.js.download"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:Arial,sans-serif;background:#f4f4f4;color:#222;min-height:100vh;}
@@ -96,36 +96,52 @@ table.export-table tr:nth-child(even){background:#fafafa;}
 <div id="ov-login" class="overlay" style="display:none">
   <div class="overlay-card">
     <h2>Painel RH</h2>
-    <p>Entre com sua matrícula ou senha</p>
-    <label>Matrícula (encarregado ou RH)</label>
-    <input type="text" id="login-mat" placeholder="Digite sua matrícula" onkeydown="if(event.key==='Enter')loginMat()"/>
-    <p id="login-mat-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Acesso não autorizado.</p>
-    <button class="btn-primary" onclick="loginMat()">Entrar com matrícula</button>
+    <p>Digite sua matrícula e senha</p>
+    <label>Matrícula</label>
+    <input type="text" id="login-mat" placeholder="Digite sua matrícula" onkeydown="if(event.key===&#39;Enter&#39;)document.getElementById(&#39;login-senha&#39;).focus()">
+    <label>Senha</label>
+    <input type="password" id="login-senha" placeholder="••••••" onkeydown="if(event.key===&#39;Enter&#39;)loginSenha()">
+    <p id="login-senha-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Matrícula ou senha incorreta.</p>
+    <button class="btn-primary" onclick="loginSenha()">Entrar</button>
     <div style="text-align:center;margin:12px 0;font-size:12px;color:#aaa">— ou —</div>
-    <label>Senha do painel</label>
-    <input type="password" id="login-senha" placeholder="••••••" onkeydown="if(event.key==='Enter')loginSenha()"/>
-    <p id="login-senha-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senha incorreta.</p>
-    <button class="btn-secondary" style="margin-top:0" onclick="loginSenha()">Entrar com senha</button>
+    <label>Senha master / RH</label>
+    <input type="password" id="login-senha-rh" placeholder="Senha RH ou master" onkeydown="if(event.key===&#39;Enter&#39;)loginSenhaRH()">
+    <p id="login-senha-rh-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senha incorreta.</p>
+    <button class="btn-secondary" style="margin-top:0" onclick="loginSenhaRH()">Entrar como RH</button>
     <span class="link-esqueci" onclick="abrirEsqueci()">Esqueci minha senha</span>
     <button class="btn-secondary" onclick="fecharLogin()">Voltar</button>
+  </div>
+</div>
+
+<div id="ov-trocar" class="overlay" style="display:none">
+  <div class="overlay-card">
+    <h2>Primeiro acesso</h2>
+    <p>Olá, <strong id="trocar-nome"></strong>! Crie sua senha pessoal.</p>
+    <input type="hidden" id="trocar-mat">
+    <label>Nova senha</label>
+    <input type="password" id="trocar-nova" placeholder="Mínimo 4 caracteres">
+    <label>Confirmar senha</label>
+    <input type="password" id="trocar-conf" placeholder="Repita a senha" onkeydown="if(event.key===&#39;Enter&#39;)salvarTrocarSenha()">
+    <p id="trocar-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">As senhas não coincidem.</p>
+    <button class="btn-primary" onclick="salvarTrocarSenha()">Salvar minha senha</button>
   </div>
 </div>
 
 <div id="ov-esqueci" class="overlay" style="display:none">
   <div class="overlay-card">
     <h2>Recuperar senha</h2>
-    <p id="esqueci-desc">Um código será enviado para <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="86f4eec6f4f6e5e9e8f5f2f4f3e4e7f5e3a8e5e9eba8e4f4">[email&#160;protected]</a></p>
+    <p id="esqueci-desc">Um código será enviado para <a href="file:///C:/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="86f4eec6f4f6e5e9e8f5f2f4f3e4e7f5e3a8e5e9eba8e4f4">[email&nbsp;protected]</a></p>
     <div id="esqueci-s1"><button class="btn-primary" id="btn-esqueci-cod" onclick="enviarCodigoEsqueci()">Enviar código</button><button class="btn-secondary" onclick="fecharEsqueci()">Cancelar</button></div>
     <div id="esqueci-s2" style="display:none">
       <label>Código recebido</label>
-      <input type="text" id="esqueci-cod" placeholder="000000" maxlength="6" style="letter-spacing:4px;font-size:22px;text-align:center"/>
+      <input type="text" id="esqueci-cod" placeholder="000000" maxlength="6" style="letter-spacing:4px;font-size:22px;text-align:center">
       <p id="esqueci-cod-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Código incorreto.</p>
       <button class="btn-primary" onclick="verificarCodigoEsqueci()">Verificar</button>
       <button class="btn-secondary" onclick="fecharEsqueci()">Cancelar</button>
     </div>
     <div id="esqueci-s3" style="display:none">
-      <label>Nova senha</label><input type="password" id="esqueci-nova" placeholder="Nova senha"/>
-      <label>Confirmar</label><input type="password" id="esqueci-conf" placeholder="Repita"/>
+      <label>Nova senha</label><input type="password" id="esqueci-nova" placeholder="Nova senha">
+      <label>Confirmar</label><input type="password" id="esqueci-conf" placeholder="Repita">
       <p id="esqueci-conf-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senhas não coincidem.</p>
       <button class="btn-primary" onclick="salvarSenhaEsqueci()">Salvar nova senha</button>
       <button class="btn-secondary" onclick="fecharEsqueci()">Cancelar</button>
@@ -136,18 +152,18 @@ table.export-table tr:nth-child(even){background:#fafafa;}
 <div id="ov-altsenha" class="overlay" style="display:none">
   <div class="overlay-card">
     <h2>Alterar senha</h2>
-    <p>Um código será enviado para <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="780a10380a081b17160b0c0a0d1a190b1d561b1715561a0a">[email&#160;protected]</a></p>
+    <p>Um código será enviado para <a href="file:///C:/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="780a10380a081b17160b0c0a0d1a190b1d561b1715561a0a">[email&nbsp;protected]</a></p>
     <div id="alt-s1"><button class="btn-primary" id="btn-alt-cod" onclick="enviarCodigoAlt()">Enviar código</button><button class="btn-secondary" onclick="fecharAlt()">Cancelar</button></div>
     <div id="alt-s2" style="display:none">
       <label>Código recebido</label>
-      <input type="text" id="alt-cod" placeholder="000000" maxlength="6" style="letter-spacing:4px;font-size:22px;text-align:center"/>
+      <input type="text" id="alt-cod" placeholder="000000" maxlength="6" style="letter-spacing:4px;font-size:22px;text-align:center">
       <p id="alt-cod-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Código incorreto.</p>
       <button class="btn-primary" onclick="verificarCodigoAlt()">Verificar</button>
       <button class="btn-secondary" onclick="fecharAlt()">Cancelar</button>
     </div>
     <div id="alt-s3" style="display:none">
-      <label>Nova senha</label><input type="password" id="alt-nova" placeholder="Nova senha"/>
-      <label>Confirmar</label><input type="password" id="alt-conf" placeholder="Repita"/>
+      <label>Nova senha</label><input type="password" id="alt-nova" placeholder="Nova senha">
+      <label>Confirmar</label><input type="password" id="alt-conf" placeholder="Repita">
       <p id="alt-conf-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senhas não coincidem.</p>
       <button class="btn-primary" onclick="salvarSenhaAlt()">Salvar nova senha</button>
       <button class="btn-secondary" onclick="fecharAlt()">Cancelar</button>
@@ -159,7 +175,7 @@ table.export-table tr:nth-child(even){background:#fafafa;}
   <div class="overlay-card">
     <h2>Buscar funcionário</h2>
     <p>Digite o nome para pesquisar</p>
-    <input type="text" id="busca-input" placeholder="Ex: Carlos..." oninput="filtrarBusca(this.value)" autocomplete="off"/>
+    <input type="text" id="busca-input" placeholder="Ex: Carlos..." oninput="filtrarBusca(this.value)" autocomplete="off">
     <div id="busca-res" style="max-height:280px;overflow-y:auto;border:1px solid #eee;border-radius:8px;"></div>
     <button class="btn-secondary" onclick="fecharBusca()" style="margin-top:1rem">Fechar</button>
   </div>
@@ -170,16 +186,39 @@ table.export-table tr:nth-child(even){background:#fafafa;}
     <h2>Limpar pedidos</h2>
     <p>Digite a senha do RH ou a senha master para confirmar.</p>
     <label>Senha</label>
-    <input type="password" id="limpar-senha" placeholder="••••••"/>
+    <input type="password" id="limpar-senha" placeholder="••••••">
     <p id="limpar-erro" style="color:#e24b4a;font-size:12px;margin-top:-8px;margin-bottom:10px;display:none">Senha incorreta.</p>
     <button class="btn-primary" style="background:#e24b4a" onclick="confirmarLimpar()">Confirmar</button>
     <button class="btn-secondary" onclick="fecharLimpar()">Cancelar</button>
   </div>
 </div>
 
-<div class="container"><div id="app"></div></div>
+<div class="container"><div id="app"><div class="logo"><h1>Pedido de Refeição</h1><p>RP Construbase — Mogi Guaçu</p></div>
+    <div class="nav-tabs"><button class="tab active">Fazer pedido</button><button class="tab" onclick="abrirAdmin()">Painel RH</button></div>
+    <div class="aviso">Pedidos de <strong>janta</strong> aceitos até as <strong>13:30</strong></div>
+    <div class="card">
+      <label>Matrícula</label>
+      <div class="busca-wrapper"><input type="text" id="mat" placeholder="Digite a matrícula" oninput="buscarMat(this.value)" autocomplete="off" style="margin-bottom:0;padding-right:40px"><span class="busca-ico" onclick="abrirBusca()">🔍</span></div>
+      <div id="sug" class="nome-sugerido" style="display:none"></div>
+      <div id="mat-err" class="matricula-erro" style="display:none">Matrícula não encontrada.</div>
+      <label style="margin-top:6px">Nome completo</label>
+      <input type="text" id="nome-f" placeholder="Preenchido automaticamente" style="background:#f9f9f9" readonly="">
+      <label>Local de entrega</label>
+      <select id="local"><option value="">Selecione o local...</option></select>
+      <label>Refeição</label>
+      <select id="tipo"><option value="">Selecione...</option><option value="Janta">Janta</option></select>
+      <label>Possui alguma restrição alimentar?</label>
+      <div class="sim-nao"><button id="btn-sim" onclick="setRestricao(true)">Sim</button><button id="btn-nao" onclick="setRestricao(false)">Não</button></div>
+      <div id="bloco-rest" style="display:none">
+        <label>Selecione as restrições</label>
+        <div style="border:1px solid #eee;border-radius:8px;padding:4px 10px;margin-bottom:10px"></div>
+        <label>Outra restrição <span style="font-weight:400;color:#aaa">(opcional)</span></label>
+        <textarea id="outra-rest" placeholder="Descreva outra restrição..."></textarea>
+      </div>
+      <button class="btn-primary" onclick="fazerPed()">Confirmar pedido</button>
+    </div></div></div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 emailjs.init('d2AUQ-6X7bl4yUhuU');
 const SVC='service_fil3aea',TPL='template_9x2loev';
 const EMAIL_RH='rh@rpconstrubase.com.br',EMAIL_DP='dp@rpconstrubase.com.br';
@@ -214,7 +253,11 @@ const getDisp=()=>{
   if(m>=8*60+30&&m<14*60)op.push('Janta');
   return op;
 };
-const doDia=(tipo)=>pedidos.filter(p=>p.data===hoje()&&(!tipo||p.tipo===tipo));
+const doDia=(tipo,todos=false)=>{
+  const base=pedidos.filter(p=>p.data===hoje()&&(!tipo||p.tipo===tipo));
+  if(todos||!operador||operador.tipo==='rh')return base;
+  return base.filter(p=>p.operador===operador.m);
+};
 const deOntem=()=>{const d=new Date();d.setDate(d.getDate()-1);const ot=d.toLocaleDateString('pt-BR');return pedidos.filter(p=>p.data===ot&&p.operador===operador?.m);};
 const porLocal=(l)=>{const g={};l.forEach(p=>{if(!g[p.local])g[p.local]=[];g[p.local].push(p);});return g;};
 const restsDia=()=>{const f=isFds();return rests.filter(r=>r.dias==='ambos'||(r.dias==='fds'&&f)||(r.dias==='semana'&&!f));};
@@ -265,7 +308,7 @@ async function load(){
       carregarAba('Restricoes'),
       carregarAba('Centro de Custo')
     ]);
-    if(r1.length){funcs=limparCabecalho(r1).filter(r=>r[0]&&r[1]).map(r=>({m:String(r[0]).replace(/\.0$/,''),n:r[1].toUpperCase(),tipo:(r[2]||'funcionario').toLowerCase().trim()}));localStorage.setItem('rp_cache_funcs',JSON.stringify(funcs));}
+    if(r1.length){funcs=limparCabecalho(r1).filter(r=>r[0]&&r[1]).map(r=>({m:String(r[0]).replace(/\.0$/,''),n:r[1].toUpperCase(),tipo:(r[2]||'funcionario').toLowerCase().trim(),senha:(r[3]||'').trim()}));localStorage.setItem('rp_cache_funcs',JSON.stringify(funcs));}
     if(r2.length){rests=limparCabecalho(r2).filter(r=>r[0]&&r[1]).map(r=>({nome:r[0],email:r[1],dias:(r[2]||'ambos').toLowerCase().trim(),whatsapp:(r[3]||'').replace(/\D/g,'')}));localStorage.setItem('rp_cache_rests',JSON.stringify(rests));}
     if(r3.length){locais=limparCabecalho(r3).filter(r=>r[0]).map(r=>r[0]);localStorage.setItem('rp_cache_locais',JSON.stringify(locais));}
     if(r4.length){restricoes=limparCabecalho(r4).filter(r=>r[0]).map(r=>r[0]);localStorage.setItem('rp_cache_restricoes',JSON.stringify(restricoes));}
@@ -274,16 +317,28 @@ async function load(){
   }catch(e){console.error('Erro ao carregar planilha:',e);}
 }
 
-function loginMat(){
-  const v=document.getElementById('login-mat').value.trim().toUpperCase();
-  const f=funcs.find(x=>x.m.toUpperCase()===v&&(x.tipo==='encarregado'||x.tipo==='rh'));
-  if(f){operador=f;document.getElementById('ov-login').style.display='none';view='admin';aview='lista';render();}
-  else document.getElementById('login-mat-erro').style.display='block';
-}
 function loginSenha(){
-  const v=document.getElementById('login-senha').value;
-  if(isSenhaRH(v)||isSenhaMaster(v)){operador={m:'senha',n:'Acesso por senha',tipo:'rh'};document.getElementById('ov-login').style.display='none';view='admin';aview='lista';render();}
-  else document.getElementById('login-senha-erro').style.display='block';
+  const mat=document.getElementById('login-mat').value.trim().toUpperCase();
+  const sen=document.getElementById('login-senha').value;
+  const f=funcs.find(x=>x.m.toUpperCase()===mat&&(x.tipo==='encarregado'||x.tipo==='rh'));
+  if(!f){document.getElementById('login-senha-erro').style.display='block';return;}
+  // Verificar senha local primeiro, depois planilha
+  const senhaLocal=localStorage.getItem('rp_senha_'+mat)||f.senha||'';
+  if(sen===senhaLocal||sen===f.senha){
+    operador=f;document.getElementById('ov-login').style.display='none';
+    // Verificar se é primeira vez (senha igual à da planilha)
+    const senhaLocalSalva=localStorage.getItem('rp_senha_'+mat);
+    if(!senhaLocalSalva&&f.senha&&sen===f.senha){
+      operador=f;abrirTrocarSenha(mat,f.n);
+    }else{
+      view='admin';aview='lista';render();
+    }
+  }else document.getElementById('login-senha-erro').style.display='block';
+}
+function loginSenhaRH(){
+  const v=document.getElementById('login-senha-rh').value;
+  if(isSenhaRH(v)||isSenhaMaster(v)){operador={m:'senha',n:'Acesso RH',tipo:'rh'};document.getElementById('ov-login').style.display='none';view='admin';aview='lista';render();}
+  else document.getElementById('login-senha-rh-erro').style.display='block';
 }
 function fecharLogin(){document.getElementById('ov-login').style.display='none';view='pedido';render();}
 function abrirAdmin(){
@@ -292,6 +347,27 @@ function abrirAdmin(){
   document.getElementById('login-mat').value='';document.getElementById('login-senha').value='';
   document.getElementById('login-mat-erro').style.display='none';document.getElementById('login-senha-erro').style.display='none';
   setTimeout(()=>document.getElementById('login-mat').focus(),100);
+}
+
+function abrirTrocarSenha(mat,nome){
+  document.getElementById('ov-login').style.display='none';
+  document.getElementById('ov-trocar').style.display='flex';
+  document.getElementById('trocar-nome').textContent=nome;
+  document.getElementById('trocar-mat').value=mat;
+  document.getElementById('trocar-nova').value='';
+  document.getElementById('trocar-conf').value='';
+  document.getElementById('trocar-erro').style.display='none';
+}
+
+function salvarTrocarSenha(){
+  const mat=document.getElementById('trocar-mat').value;
+  const nova=document.getElementById('trocar-nova').value;
+  const conf=document.getElementById('trocar-conf').value;
+  if(!nova||nova.length<4){alert('Mínimo 4 caracteres.');return;}
+  if(nova!==conf){document.getElementById('trocar-erro').style.display='block';return;}
+  localStorage.setItem('rp_senha_'+mat,nova);
+  document.getElementById('ov-trocar').style.display='none';
+  view='admin';aview='lista';render();
 }
 
 function abrirEsqueci(){
@@ -504,9 +580,10 @@ function buildAdm(){
       <button class="admin-tab ${aview==='lista'?'active':''}" onclick="aview='lista';render()">Lista</button>
       <button class="admin-tab ${aview==='enviar'?'active':''}" onclick="aview='enviar';render()">Enviar</button>
       <button class="admin-tab ${aview==='exportar'?'active':''}" onclick="aview='exportar';render()">Exportar</button>
-      ${isRH?`<button class="admin-tab ${aview==='config'?'active':''}" onclick="aview='config';render()">Config</button>`:''}
+      <button class="admin-tab ${aview==='config'?'active':''}" onclick="aview='config';render()">Config</button>
     </div>`;
   if(aview==='lista'){
+    const almoco=doDia('Almoço',isRH),jan=doDia('Janta',isRH);
     const rg=(l,tp)=>{
       if(!l.length)return`<p class="empty-state">Nenhum pedido de ${tp.toLowerCase()} hoje</p>`;
       const g=porLocal(l);let h='';
@@ -542,7 +619,7 @@ function buildAdm(){
       </div>`;
   }
   if(aview==='exportar'){
-    const td=doDia(null);let li='';
+    const td=doDia(null,isRH);let li='';
     td.forEach(p=>{li+=`<tr><td>${p.protocolo||''}</td><td>${p.matricula||''}</td><td>${p.nome}</td><td>${p.tipo}</td><td>${p.local}</td><td>${p.data}</td><td>${p.hora||''}</td><td>${p.restaurante||''}</td><td>${p.restricoes&&p.restricoes.length>0?p.restricoes.join('; '):''}</td><td>${p.centroCusto||''}</td></tr>`;});
     return`<div class="logo"><h1>Exportar dados</h1><p>${hj}</p></div>${nav}
       <div class="card">${td.length===0?`<p class="empty-state">Nenhum pedido hoje</p>`:`<button class="btn-export" onclick="baixarCSV()">Baixar .CSV</button><div class="overflow-x"><table class="export-table"><thead><tr><th>Protocolo</th><th>Matrícula</th><th>Nome</th><th>Pedido</th><th>Local</th><th>Data</th><th>Hora</th><th>Restaurante</th><th>Restrições</th><th>Centro de Custo</th></tr></thead><tbody>${li}</tbody></table></div>`}</div>`;
@@ -552,7 +629,10 @@ function buildAdm(){
       <div class="card">
         <div class="info-box">Dados gerenciados pela planilha Google Sheets.</div>
         <button class="btn-primary" onclick="recarregar()">Recarregar dados da planilha</button>
-        <div class="sep"><p style="font-size:13px;color:#666;margin-bottom:10px">Segurança</p><button class="btn-secondary" style="margin-top:0" onclick="abrirAlt()">Alterar senha do painel</button></div>
+        <div class="sep"><p style="font-size:13px;color:#666;margin-bottom:10px">Segurança</p>
+          ${isRH?`<button class="btn-secondary" style="margin-top:0" onclick="abrirAlt()">Alterar senha do RH</button>`:''}
+          <button class="btn-secondary" style="margin-top:8px" onclick="abrirTrocarSenha('${operador?.m||''}','${operador?.n||''}')">Alterar minha senha</button>
+        </div>
         <div class="sep"><p style="font-size:13px;color:#666;margin-bottom:8px">Remover pedidos de hoje</p><button class="btn-sm" style="color:#e24b4a;border-color:#e24b4a" onclick="abrirLimpar()">Limpar pedidos de hoje</button></div>
       </div>`;
   }
@@ -578,8 +658,7 @@ function fazerPed(){
   const hj=hoje();
   if(pedidos.find(p=>p.matricula===f.m&&p.tipo===tipo&&p.data===hj)){alert(`${f.n} já tem pedido de ${tipo} hoje.`);return;}
   const rd=restsDia();
-  const ccVal=document.getElementById('cc-sel')?.value||'';
-  const np={id:Date.now().toString(),protocolo:proto(),matricula:f.m,nome:f.n,local,tipo,data:hj,hora:agora(),restaurante:rd.length>0?rd[0].nome:'',restricoes:getRestricoesSelecionadas(),operador:operador?.m||null,centroCusto:ccVal};
+  const np={id:Date.now().toString(),protocolo:proto(),matricula:f.m,nome:f.n,local,tipo,data:hj,hora:agora(),restaurante:rd.length>0?rd[0].nome:'',restricoes:getRestricoesSelecionadas(),operador:operador?.m||null,centroCusto:''};
   pedidos.push(np);salvar();ultimoPed=np;temRestricao=null;view='comp';render();
 }
 
@@ -603,6 +682,12 @@ async function enviarEmail(tipo){
   const bid=tipo==='Almoço'?'btn-alm':'btn-jan',btn=document.getElementById(bid);
   if(btn){btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Enviando...';}
   const cc=document.getElementById('cc-sel')?.value||'';
+  // Salvar centro de custo nos pedidos do dia
+  if(cc){
+    const hj=hoje();
+    pedidos=pedidos.map(p=>p.data===hj&&p.tipo===tipo?{...p,centroCusto:cc}:p);
+    salvar();
+  }
   try{
     await emailjs.send(SVC,TPL,{to_email:restSel.email,cc_email:EMAIL_RH+','+EMAIL_DP,subject:`Pedido de Refeição - ${tipo} - RP Construbase - ${hoje()}`,message:corpo(tipo,cc)});
     alert(`E-mail de ${tipo} enviado para ${restSel.nome}!`);
@@ -615,6 +700,11 @@ function enviarWA(tipo){
   if(!restSel){alert('Selecione o restaurante primeiro.');return;}
   if(!restSel.whatsapp){alert('Este restaurante não tem WhatsApp cadastrado.');return;}
   const cc=document.getElementById('cc-sel')?.value||'';
+  if(cc){
+    const hj=hoje();
+    pedidos=pedidos.map(p=>p.data===hj&&p.tipo===tipo?{...p,centroCusto:cc}:p);
+    salvar();
+  }
   window.open(`https://wa.me/${restSel.whatsapp}?text=${encodeURIComponent(corpo(tipo,cc,true))}`,'_blank');
 }
 
@@ -641,5 +731,5 @@ async function recarregar(){
 render();
 load();
 </script>
-</body>
-</html>
+
+</body></html>
