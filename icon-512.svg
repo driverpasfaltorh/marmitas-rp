@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="100" fill="#1A4FA0"/>
+<ellipse cx="256" cy="300" rx="130" ry="36" fill="none" stroke="white" stroke-width="10"/>
+<ellipse cx="256" cy="300" rx="92" ry="24" fill="none" stroke="white" stroke-width="8"/>
+<line x1="180" y1="160" x2="180" y2="264" stroke="white" stroke-width="9" stroke-linecap="round"/>
+<line x1="169" y1="160" x2="169" y2="205" stroke="white" stroke-width="7" stroke-linecap="round"/>
+<line x1="180" y1="160" x2="180" y2="205" stroke="white" stroke-width="7" stroke-linecap="round"/>
+<line x1="191" y1="160" x2="191" y2="205" stroke="white" stroke-width="7" stroke-linecap="round"/>
+<line x1="332" y1="160" x2="332" y2="264" stroke="white" stroke-width="9" stroke-linecap="round"/>
+<path d="M332 160 Q355 185 332 220" fill="white"/>
+<text x="256" y="390" text-anchor="middle" font-family="Arial,sans-serif" font-size="58" font-weight="700" fill="white">RP</text>
+<text x="256" y="432" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="400" fill="white">Pedido de Refeição</text>
+</svg>
